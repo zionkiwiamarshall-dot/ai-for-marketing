@@ -7,8 +7,13 @@ const vm = require("vm");
 const root = path.resolve(__dirname, "..");
 const ctx = { window: {} };
 vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(path.join(root, "assets/art.js"), "utf8"), ctx);
 vm.runInContext(fs.readFileSync(path.join(root, "content/course.js"), "utf8"), ctx);
+const actPath = path.join(root, "content/activities.js");
+if (fs.existsSync(actPath)) vm.runInContext(fs.readFileSync(actPath, "utf8"), ctx);
 const C = ctx.window.COURSE;
+const X = ctx.window.EXTRAS || { figures: {}, compare: {}, art: {}, acts: {} };
+const ART = ctx.window.ART || (() => "");
 const site = process.env.SITE_URL || "";
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -48,7 +53,7 @@ tr:nth-child(even) td { background: #F8FAFC; }
 .cover .glow { position: absolute; right: -60mm; top: -60mm; width: 190mm; height: 190mm; border-radius: 50%; background: radial-gradient(circle at 40% 60%, var(--primary), transparent 62%); opacity: .75; }
 .cover .glow2 { position: absolute; left: -50mm; bottom: -70mm; width: 150mm; height: 150mm; border-radius: 50%; background: radial-gradient(circle, rgba(255,176,32,.45), transparent 65%); }
 .cover .bar { position: absolute; left: 0; right: 0; top: 0; height: 5mm; background: linear-gradient(90deg, var(--primary), var(--blue) 55%, var(--gold)); }
-.cover .inner { position: absolute; left: 22mm; right: 22mm; top: 70mm; }
+.cover .inner { position: absolute; left: 22mm; right: 22mm; top: 40mm; }
 .cover .tag { display: inline-block; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; padding: 4pt 9pt; border-radius: 20pt; }
 .cover h1 { color: #fff; font-size: 52pt; line-height: 1; margin: 16pt 0 14pt; }
 .cover .sub { font-size: 15pt; line-height: 1.45; color: #CBD5E1; max-width: 140mm; }
@@ -74,8 +79,8 @@ tr:nth-child(even) td { background: #F8FAFC; }
 .chapter-open { break-before: page; padding-top: 30mm; }
 .chapter-open .num { font-family: "Archivo Black", sans-serif; font-size: 72pt; line-height: 1; color: var(--primary); }
 .chapter-open .kicker { font-size: 9pt; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-top: 8pt; }
-.chapter-open h1 { font-size: 30pt; line-height: 1.08; margin: 6pt 0 12pt; }
-.chapter-open .summary { font-size: 13pt; line-height: 1.5; color: var(--ink2); max-width: 150mm; }
+.chapter-open h1 { font-size: 30pt; line-height: 1.08; margin: 6pt 0 12pt; max-width: 105mm; }
+.chapter-open .summary { font-size: 13pt; line-height: 1.5; color: var(--ink2); max-width: 105mm; }
 .learn { margin: 18pt 0 0; border-left: 3pt solid var(--gold); padding: 6pt 0 6pt 12pt; }
 .learn b { display: block; font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 4pt; }
 .lesson { margin-top: 22pt; }
@@ -98,6 +103,24 @@ tr:nth-child(even) td { background: #F8FAFC; }
 .apply h3 { margin: 3pt 0 5pt; font-size: 14pt; }
 .apply .online { margin-top: 8pt; font-size: 9.4pt; color: var(--muted); }
 
+.cover-art { position: absolute; right: 18mm; top: 150mm; width: 120mm; background: #fff; border-radius: 6mm; padding: 5mm; transform: rotate(2deg); box-shadow: 0 10mm 30mm rgba(0,0,0,.35); }
+.chapter-open { position: relative; }
+.chapter-art { position: absolute; right: 0; top: 24mm; width: 62mm; background: #F1F5F9; border-radius: 6mm; padding: 3mm; }
+.figure { margin: 8pt 0 14pt; border: 1px solid var(--line); border-radius: 8pt; padding: 8pt; break-inside: avoid; }
+.figure figcaption { font-size: 8.8pt; color: var(--muted); text-align: center; margin-top: 4pt; }
+.art { width: 100%; height: auto; display: block; }
+.cmp { margin: 12pt 0 14pt; border: 1px solid var(--line); border-radius: 8pt; overflow: hidden; break-inside: avoid; }
+.cmp .ch { background: #F1F5F9; padding: 6pt 11pt; font-weight: 800; color: var(--ink); font-size: 10.5pt; }
+.cmp .ch span { display: block; font-size: 7.8pt; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.cmp .row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.cmp .row > div { padding: 7pt 11pt; font-size: 9pt; }
+.cmp .row > div + div { border-left: 1px solid var(--line); background: #FAFBFC; }
+.cmp pre { white-space: pre-wrap; margin: 0; font-family: "Anonymous Pro", monospace; font-size: 8.8pt; line-height: 1.45; }
+.cmp .tag { display: inline-block; font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 1.5pt 6pt; border-radius: 8pt; margin-bottom: 4pt; color: #fff; }
+.cmp .tag.w { background: #E5484D; } .cmp .tag.s { background: #12B886; } .cmp .tag.a { background: var(--ink); color: var(--gold); }
+.cmp .verdict { grid-column: 1 / -1; font-size: 9pt; font-weight: 700; padding: 5pt 11pt !important; border-left: 0 !important; }
+.cmp .verdict.w { background: #FFF1F1 !important; color: #9B1C1C; } .cmp .verdict.s { background: #E6FCF5 !important; color: #08704F; }
+.online-acts { margin-top: 6pt; font-size: 9.2pt; color: var(--ink2); }
 .appendix { break-before: page; }
 .appendix h1 { font-size: 28pt; margin: 0 0 6pt; }
 .appendix .group { font-family: "Archivo Black", sans-serif; color: var(--primary); font-size: 12pt; margin: 18pt 0 4pt; break-after: avoid; }
@@ -113,6 +136,7 @@ const coverHtml = `
     <h1>${esc(C.title)}</h1>
     <div class="sub">${esc(C.ebookSubtitle)}</div>
   </div>
+  ${X.heroArt ? `<div class="cover-art">${ART(X.heroArt)}</div>` : ""}
   <div class="foot"><div><b>${C.modules.length} modules</b>Lessons, worked examples and ready-to-use prompts</div><div>Edition 1 · ${new Date().getFullYear()}</div></div>
 </section>`;
 
@@ -142,21 +166,32 @@ const enhance = (html) => html.replace(/<div class="prompt" data-title="([^"]*)"
 
 const chapters = C.modules.map((m, i) => `
 <section class="chapter-open">
+  ${(X.art || {})[m.id] ? `<div class="chapter-art">${ART(X.art[m.id])}</div>` : ""}
   <div class="num">${n2(i)}</div>
   <div class="kicker">Module ${i + 1} of ${C.modules.length} · about ${m.minutes} minutes</div>
   <h1>${esc(m.title)}</h1>
   <div class="summary">${esc(m.summary)}</div>
   <div class="learn"><b>In this chapter you will learn to</b><ul>${m.outcomes.map((o) => `<li>${esc(o)}</li>`).join("")}</ul></div>
 </section>
-${m.lessons.map((l, k) => `<section class="lesson"><h2><small>Lesson ${i + 1}.${k + 1}</small>${esc(l.title)}</h2>${enhance(l.html)}</section>`).join("")}
+${m.lessons.map((l, k) => `<section class="lesson"><h2><small>Lesson ${i + 1}.${k + 1}</small>${esc(l.title)}</h2>${figure(m.id + ":" + k)}${enhance(l.html)}${compare(m.id + ":" + k)}</section>`).join("")}
 <div class="apply">
   <div class="k">Apply it at work</div>
   <h3>${esc(m.practice.title)}</h3>
   <p>${esc(m.practice.brief)}</p>
   <ol>${m.practice.steps.map((s) => `<li>${s}</li>`).join("")}</ol>
-  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site${site ? ` (${esc(site)})` : ""}.</div>
+  <div class="online">On the learning site${site ? ` (${esc(site)})` : ""}: the starter prompt and checklist for this task, ${(X.acts[m.id] || []).length} interactive activities, flashcards and the module quiz.</div>
 </div>`).join("");
 
+function figure(key) {
+  const f = (X.figures || {})[key];
+  return f ? `<figure class="figure">${ART(f.art)}${f.caption ? `<figcaption>${esc(f.caption)}</figcaption>` : ""}</figure>` : "";
+}
+function compare(key) {
+  const c = (X.compare || {})[key];
+  if (!c) return "";
+  const row = (v, t) => `<div class="row"><div><span class="tag ${t}">${v === "weak" ? "Weak prompt" : "Strong prompt"}</span><pre>${esc(c[v].prompt)}</pre></div><div><span class="tag a">AI replies</span><div>${esc(c[v].output).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>")}</div></div><div class="verdict ${t}">${esc(c[v].verdict)}</div></div>`;
+  return `<div class="cmp"><div class="ch"><span>See the difference</span>${esc(c.title)}</div>${row("weak", "w")}${row("strong", "s")}</div>`;
+}
 let lastN = 0;
 const appendix = `
 <section class="appendix">

@@ -22,7 +22,7 @@ tr:nth-child(even) td { background: #F8FAFC; }
 .cover .glow { position: absolute; right: -60mm; top: -60mm; width: 190mm; height: 190mm; border-radius: 50%; background: radial-gradient(circle at 40% 60%, var(--primary), transparent 62%); opacity: .75; }
 .cover .glow2 { position: absolute; left: -50mm; bottom: -70mm; width: 150mm; height: 150mm; border-radius: 50%; background: radial-gradient(circle, rgba(255,176,32,.45), transparent 65%); }
 .cover .bar { position: absolute; left: 0; right: 0; top: 0; height: 5mm; background: linear-gradient(90deg, var(--primary), var(--blue) 55%, var(--gold)); }
-.cover .inner { position: absolute; left: 22mm; right: 22mm; top: 70mm; }
+.cover .inner { position: absolute; left: 22mm; right: 22mm; top: 40mm; }
 .cover .tag { display: inline-block; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; padding: 4pt 9pt; border-radius: 20pt; }
 .cover h1 { color: #fff; font-size: 52pt; line-height: 1; margin: 16pt 0 14pt; }
 .cover .sub { font-size: 15pt; line-height: 1.45; color: #CBD5E1; max-width: 140mm; }
@@ -48,8 +48,8 @@ tr:nth-child(even) td { background: #F8FAFC; }
 .chapter-open { break-before: page; padding-top: 30mm; }
 .chapter-open .num { font-family: "Archivo Black", sans-serif; font-size: 72pt; line-height: 1; color: var(--primary); }
 .chapter-open .kicker { font-size: 9pt; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-top: 8pt; }
-.chapter-open h1 { font-size: 30pt; line-height: 1.08; margin: 6pt 0 12pt; }
-.chapter-open .summary { font-size: 13pt; line-height: 1.5; color: var(--ink2); max-width: 150mm; }
+.chapter-open h1 { font-size: 30pt; line-height: 1.08; margin: 6pt 0 12pt; max-width: 105mm; }
+.chapter-open .summary { font-size: 13pt; line-height: 1.5; color: var(--ink2); max-width: 105mm; }
 .learn { margin: 18pt 0 0; border-left: 3pt solid var(--gold); padding: 6pt 0 6pt 12pt; }
 .learn b { display: block; font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 4pt; }
 .lesson { margin-top: 22pt; }
@@ -72,6 +72,24 @@ tr:nth-child(even) td { background: #F8FAFC; }
 .apply h3 { margin: 3pt 0 5pt; font-size: 14pt; }
 .apply .online { margin-top: 8pt; font-size: 9.4pt; color: var(--muted); }
 
+.cover-art { position: absolute; right: 18mm; top: 150mm; width: 120mm; background: #fff; border-radius: 6mm; padding: 5mm; transform: rotate(2deg); box-shadow: 0 10mm 30mm rgba(0,0,0,.35); }
+.chapter-open { position: relative; }
+.chapter-art { position: absolute; right: 0; top: 24mm; width: 62mm; background: #F1F5F9; border-radius: 6mm; padding: 3mm; }
+.figure { margin: 8pt 0 14pt; border: 1px solid var(--line); border-radius: 8pt; padding: 8pt; break-inside: avoid; }
+.figure figcaption { font-size: 8.8pt; color: var(--muted); text-align: center; margin-top: 4pt; }
+.art { width: 100%; height: auto; display: block; }
+.cmp { margin: 12pt 0 14pt; border: 1px solid var(--line); border-radius: 8pt; overflow: hidden; break-inside: avoid; }
+.cmp .ch { background: #F1F5F9; padding: 6pt 11pt; font-weight: 800; color: var(--ink); font-size: 10.5pt; }
+.cmp .ch span { display: block; font-size: 7.8pt; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.cmp .row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.cmp .row > div { padding: 7pt 11pt; font-size: 9pt; }
+.cmp .row > div + div { border-left: 1px solid var(--line); background: #FAFBFC; }
+.cmp pre { white-space: pre-wrap; margin: 0; font-family: "Anonymous Pro", monospace; font-size: 8.8pt; line-height: 1.45; }
+.cmp .tag { display: inline-block; font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 1.5pt 6pt; border-radius: 8pt; margin-bottom: 4pt; color: #fff; }
+.cmp .tag.w { background: #E5484D; } .cmp .tag.s { background: #12B886; } .cmp .tag.a { background: var(--ink); color: var(--gold); }
+.cmp .verdict { grid-column: 1 / -1; font-size: 9pt; font-weight: 700; padding: 5pt 11pt !important; border-left: 0 !important; }
+.cmp .verdict.w { background: #FFF1F1 !important; color: #9B1C1C; } .cmp .verdict.s { background: #E6FCF5 !important; color: #08704F; }
+.online-acts { margin-top: 6pt; font-size: 9.2pt; color: var(--ink2); }
 .appendix { break-before: page; }
 .appendix h1 { font-size: 28pt; margin: 0 0 6pt; }
 .appendix .group { font-family: "Archivo Black", sans-serif; color: var(--primary); font-size: 12pt; margin: 18pt 0 4pt; break-after: avoid; }
@@ -85,6 +103,26 @@ tr:nth-child(even) td { background: #F8FAFC; }
     <h1>AI for Marketing</h1>
     <div class="sub">A practical guide to using AI tools for customer insight, content, campaigns and measurement</div>
   </div>
+  <div class="cover-art"><svg class="art" viewBox="0 0 420 320" role="img" aria-label="A phone showing a social post with performance cards and a megaphone" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="120" cy="90" r="70" fill="var(--primary)" opacity=".18"/><circle cx="330" cy="250" r="56" fill="var(--gold)" opacity=".2"/>
+      <rect x="146" y="34" width="132" height="256" rx="24" fill="var(--ink)"/><rect x="154" y="48" width="116" height="228" rx="16" fill="#fff"/>
+      <rect x="196" y="40" width="32" height="6" rx="3" fill="#fff" opacity=".3"/>
+      <rect x="162" y="58" width="100" height="84" rx="10" fill="var(--primary)" opacity=".9"/>
+      <circle cx="188" cy="86" r="10" fill="var(--gold)"/><path d="M162 142 L196 108 L218 128 L234 114 L262 142Z" fill="var(--primary-deep)"/>
+      <circle cx="172" cy="158" r="7" fill="var(--gold)"/><rect x="184" y="152" width="60" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="184" y="162" width="40" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/>
+      <rect x="162" y="178" width="100" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="162" y="190" width="84" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="162" y="202" width="92" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/>
+      <g transform="translate(166 226)"><path d="M8 4c-4-6-12-2-8 5l8 8 8-8c4-7-4-11-8-5z" fill="#E5484D"/><text x="22" y="14" font-family="DM Sans, sans-serif" font-size="11" font-weight="700" fill="var(--ink)">2.4k</text></g>
+      <rect x="214" y="226" width="48" height="20" rx="10" fill="var(--ink)"/><text x="223" y="240" font-family="DM Sans, sans-serif" font-size="10" font-weight="800" fill="#fff">Shop</text>
+      <rect x="32" y="126" width="112" height="74" rx="14" fill="var(--ink)" opacity=".08"/><rect x="28" y="120" width="112" height="74" rx="14" fill="#fff" stroke="var(--ink)" stroke-opacity=".12"/>
+      <text x="42" y="146" font-family="DM Sans, sans-serif" font-size="10" font-weight="700" fill="var(--ink)" opacity=".55">CLICK-THROUGH</text>
+      <text x="42" y="174" font-family="Archivo Black, sans-serif" font-size="22" fill="var(--ink)">3.8%</text>
+      <path d="M106 178 l10 -12 8 6 10 -16" stroke="var(--primary)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="296" y="76" width="108" height="96" rx="14" fill="var(--ink)" opacity=".08"/><rect x="292" y="70" width="108" height="96" rx="14" fill="#fff" stroke="var(--ink)" stroke-opacity=".12"/>
+      <rect x="304" y="84" width="24" height="24" rx="6" fill="var(--primary)"/><rect x="334" y="84" width="24" height="24" rx="6" fill="var(--gold)"/><rect x="364" y="84" width="24" height="24" rx="6" fill="var(--blue)"/>
+      <rect x="304" y="120" width="84" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="304" y="132" width="60" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="304" y="144" width="72" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/>
+      <g transform="translate(330 44)"><rect x="-26" y="-16" width="96" height="32" rx="16" fill="var(--ink)"/><path d="M-8 -8C-6.8 -1.2 -6.8 -1.2 0 0C-6.8 1.2 -6.8 1.2 -8 8C-9.2 1.2 -9.2 1.2 -16 0C-9.2 -1.2 -9.2 -1.2 -8 -8Z" fill="var(--gold)"/><text x="6" y="5" font-family="DM Sans, sans-serif" font-weight="800" font-size="12" fill="#fff">10 ideas</text></g>
+      <g transform="translate(58 250)"><path d="M0 0 L34 -16 L34 24 L0 8Z" fill="var(--gold)"/><rect x="-12" y="-4" width="14" height="16" rx="3" fill="var(--ink)"/><path d="M42 -10 q8 10 0 20 M50 -16 q14 16 0 32" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+      <path d="M388 26C389.5 34.5 389.5 34.5 398 36C389.5 37.5 389.5 37.5 388 46C386.5 37.5 386.5 37.5 378 36C386.5 34.5 386.5 34.5 388 26Z" fill="var(--gold)"/><path d="M40 62C41.2 68.8 41.2 68.8 48 70C41.2 71.2 41.2 71.2 40 78C38.8 71.2 38.8 71.2 32 70C38.8 68.8 38.8 68.8 40 62Z" fill="var(--primary)"/><circle cx="340" cy="186" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="348" cy="186" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="356" cy="186" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="364" cy="186" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="340" cy="194" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="348" cy="194" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="356" cy="194" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="364" cy="194" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="340" cy="202" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="348" cy="202" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="356" cy="202" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="364" cy="202" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="340" cy="210" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="348" cy="210" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="356" cy="210" r="1.6" fill="var(--ink)" opacity=".18"/><circle cx="364" cy="210" r="1.6" fill="var(--ink)" opacity=".18"/></svg></div>
   <div class="foot"><div><b>8 modules</b>Lessons, worked examples and ready-to-use prompts</div><div>Edition 1 · 2026</div></div>
 </section>
 <section class="front">
@@ -108,6 +146,10 @@ tr:nth-child(even) td { background: #F8FAFC; }
   </ul>
 </section>
 <section class="chapter-open">
+  <div class="chapter-art"><svg class="art" viewBox="0 0 240 180" role="img" aria-label="An AI spark beside a document being verified" xmlns="http://www.w3.org/2000/svg"><path d="M42 30C78 4 150 -4 196 24C236 48 246 104 222 140C196 178 128 186 78 170C30 154 2 120 8 84C12 60 22 44 42 30Z" fill="var(--primary)" opacity="0.14"/>
+      <rect x="58" y="46" width="104" height="120" rx="12" fill="var(--ink)" opacity=".08"/><rect x="54" y="40" width="104" height="120" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".12"/><rect x="68" y="58" width="60" height="7" rx="3.5" fill="var(--ink)" opacity="0.5"/><rect x="68" y="76" width="76" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="68" y="88" width="70" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="68" y="100" width="64" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="68" y="112" width="74" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="68" y="124" width="50" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/>
+      <circle cx="166" cy="62" r="30" fill="var(--ink)"/><path d="M166 46C168.4 59.6 168.4 59.6 182 62C168.4 64.4 168.4 64.4 166 78C163.6 64.4 163.6 64.4 150 62C163.6 59.6 163.6 59.6 166 46Z" fill="var(--gold)"/><path d="M188 32C188.9 37.1 188.9 37.1 194 38C188.9 38.9 188.9 38.9 188 44C187.1 38.9 187.1 38.9 182 38C187.1 37.1 187.1 37.1 188 32Z" fill="var(--primary)"/>
+      <circle cx="150" cy="140" r="9" fill="var(--primary)"/><path d="M146 140l3 3 5-6" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="164" y="144" font-family="DM Sans, sans-serif" font-size="11" font-weight="800" fill="var(--ink)">verified</text></svg></div>
   <div class="num">01</div>
   <div class="kicker">Module 1 of 8 · about 35 minutes</div>
   <h1>AI foundations for marketers</h1>
@@ -131,7 +173,21 @@ tr:nth-child(even) td { background: #F8FAFC; }
 <tr><td>Image generation and editing</td><td>ChatGPT images, Adobe Firefly, Midjourney, Canva AI tools</td><td>Concepts, backgrounds, mock-ups, quick edits</td></tr>
 <tr><td>Video and audio</td><td>CapCut, Descript, video generators, AI voice tools</td><td>Editing, captions, short clips, voiceovers</td></tr>
 <tr><td>AI in marketing platforms</td><td>Features in Meta, Google Ads, HubSpot, Mailchimp</td><td>Ad variations, audience suggestions, send-time and subject line help</td></tr>
-</table></section><section class="lesson"><h2><small>Lesson 1.2</small>Where AI helps most, and where it hurts</h2>
+</table></section><section class="lesson"><h2><small>Lesson 1.2</small>Where AI helps most, and where it hurts</h2><figure class="figure"><svg class="art" viewBox="0 0 640 170" role="img" aria-label="Brief, AI drafts, you verify, you publish" xmlns="http://www.w3.org/2000/svg">
+      
+        <g transform="translate(20 30)"><rect width="132" height="104" rx="16" fill="var(--ink)"/><text x="16" y="34" font-family="Archivo Black, sans-serif" font-size="13" fill="#fff" opacity=".7">01</text>
+        <text x="16" y="62" font-family="Archivo Black, sans-serif" font-size="15" fill="#fff">You brief</text><text x="16" y="84" text-anchor="start" font-family="DM Sans, sans-serif" font-size="11" font-weight="500" fill="#fff"><tspan x="16" dy="0">Context, task,</tspan><tspan x="16" dy="14.3">checks</tspan></text></g>
+        <path d="M156 82 h18 m-6 -6 l6 6 -6 6" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <g transform="translate(178 30)"><rect width="132" height="104" rx="16" fill="var(--primary)"/><text x="16" y="34" font-family="Archivo Black, sans-serif" font-size="13" fill="#fff" opacity=".7">02</text>
+        <text x="16" y="62" font-family="Archivo Black, sans-serif" font-size="15" fill="#fff">AI drafts</text><text x="16" y="84" text-anchor="start" font-family="DM Sans, sans-serif" font-size="11" font-weight="500" fill="#fff"><tspan x="16" dy="0">Fast first version</tspan></text></g>
+        <path d="M314 82 h18 m-6 -6 l6 6 -6 6" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <g transform="translate(336 30)"><rect width="132" height="104" rx="16" fill="var(--gold)"/><text x="16" y="34" font-family="Archivo Black, sans-serif" font-size="13" fill="var(--ink)" opacity=".7">03</text>
+        <text x="16" y="62" font-family="Archivo Black, sans-serif" font-size="15" fill="var(--ink)">You verify</text><text x="16" y="84" text-anchor="start" font-family="DM Sans, sans-serif" font-size="11" font-weight="500" fill="var(--ink)"><tspan x="16" dy="0">Numbers, facts,</tspan><tspan x="16" dy="14.3">logic, fit</tspan></text></g>
+        <path d="M472 82 h18 m-6 -6 l6 6 -6 6" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <g transform="translate(494 30)"><rect width="132" height="104" rx="16" fill="var(--blue)"/><text x="16" y="34" font-family="Archivo Black, sans-serif" font-size="13" fill="#fff" opacity=".7">04</text>
+        <text x="16" y="62" font-family="Archivo Black, sans-serif" font-size="15" fill="#fff">You publish</text><text x="16" y="84" text-anchor="start" font-family="DM Sans, sans-serif" font-size="11" font-weight="500" fill="#fff"><tspan x="16" dy="0">Your name, your</tspan><tspan x="16" dy="14.3">call</tspan></text></g>
+        
+      <path d="M402 140 C402 162 110 162 110 140" stroke="var(--ink)" stroke-opacity=".35" stroke-width="2" fill="none" stroke-dasharray="5 5"/><text x="256" y="166" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" fill="var(--ink)" opacity=".6">Not right? Refine the brief and go again</text></svg><figcaption>AI makes the first draft. Your judgement makes it publishable.</figcaption></figure>
 <table>
 <tr><th>Strong uses</th><th>Weak or risky uses</th></tr>
 <tr><td>Turning one idea into many formats</td><td>Publishing first drafts without editing</td></tr>
@@ -157,15 +213,23 @@ If a claim has no supporting fact, mark it [NEEDS PROOF].
 
 Facts about our product: [list]
 Text: [paste]</pre></div>
-<div class="callout warn"><span class="label">Watch out</span><p>Never publish a statistic, award, customer number or quote that AI produced unless you can trace it to a real source. Invented "facts" are the fastest way to lose credibility.</p></div></section>
+<div class="callout warn"><span class="label">Watch out</span><p>Never publish a statistic, award, customer number or quote that AI produced unless you can trace it to a real source. Invented "facts" are the fastest way to lose credibility.</p></div><div class="cmp"><div class="ch"><span>See the difference</span>A product post: generic vs specific</div><div class="row"><div><span class="tag w">Weak prompt</span><pre>Write an Instagram post for our new coffee.</pre></div><div><span class="tag a">AI replies</span><div>☕✨ Elevate your mornings with our game-changing new blend! Crafted with passion and bursting with flavour, it's the perfect way to unlock your potential every day. Are you ready to take your coffee experience to the next level? 🚀🔥 #coffee #morningvibes</div></div><div class="verdict w">Every cliché in the book. It could be any brand and sounds unmistakably like AI.</div></div><div class="row"><div><span class="tag s">Strong prompt</span><pre>Write an Instagram caption for our new cold brew.
+Facts: steeped 18 hours, single-origin beans from one farm, 330ml bottle, launches Monday, sold in our 3 shops.
+Audience: office workers 25–40. Voice: warm, dry humour, short sentences.
+Under 40 words, one emoji max. Avoid: elevate, unlock, game-changer.</pre></div><div><span class="tag a">AI replies</span><div>18 hours in the making. About 4 seconds to finish. ☕<br>Our single-origin cold brew lands in all three shops on Monday. Grab one before your 9am. What's your go-to coffee order?</div></div><div class="verdict s">Specific, believable and on-voice. The facts do the persuading.</div></div></div></section>
 <div class="apply">
   <div class="k">Apply it at work</div>
   <h3>Audit your content week</h3>
   <p>Find where AI would save you the most time in your actual marketing work.</p>
   <ol><li>List every marketing task you did in the last two weeks, including small ones like resizing images or replying to comments.</li><li>Run the starter prompt with your list.</li><li>Challenge the result. Move anything where AI would be the only source of facts or creativity to the risky column.</li><li>Pick three tasks to try during this course and note them.</li></ol>
-  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+  <div class="online">On the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/): the starter prompt and checklist for this task, 3 interactive activities, flashcards and the module quiz.</div>
 </div>
 <section class="chapter-open">
+  <div class="chapter-art"><svg class="art" viewBox="0 0 240 180" role="img" aria-label="A customer with a speech bubble and a star review" xmlns="http://www.w3.org/2000/svg"><path d="M42 30C78 4 150 -4 196 24C236 48 246 104 222 140C196 178 128 186 78 170C30 154 2 120 8 84C12 60 22 44 42 30Z" fill="var(--blue)" opacity="0.12"/>
+      <g transform="translate(72 136) scale(1.4)"><circle cx="0" cy="-26" r="11" fill="#E8B48F"/><path d="M-11 -30c2-10 20-10 22 0c-4-4-18-4-22 0z" fill="var(--ink)"/><path d="M-20 14c0-18 8-28 20-28s20 10 20 28z" fill="var(--primary)"/></g>
+      <rect x="118" y="30" width="96" height="40" rx="14" fill="var(--ink)"/><path d="M128 70 l-8 12 18-12z" fill="var(--ink)"/><rect x="130" y="44" width="60" height="5" rx="2.5" fill="#fff" opacity="0.7"/><rect x="130" y="54" width="44" height="5" rx="2.5" fill="#fff" opacity="0.4"/>
+      <rect x="134" y="96" width="84" height="56" rx="14" fill="var(--ink)" opacity=".08"/><rect x="130" y="90" width="84" height="56" rx="14" fill="#fff" stroke="var(--ink)" stroke-opacity=".12"/><path d="M146 104 l2.5 5 5.5 .8 -4 3.9 1 5.5 -5-2.6 -5 2.6 1-5.5 -4-3.9 5.5-.8z" fill="var(--gold)"/><path d="M159 104 l2.5 5 5.5 .8 -4 3.9 1 5.5 -5-2.6 -5 2.6 1-5.5 -4-3.9 5.5-.8z" fill="var(--gold)"/><path d="M172 104 l2.5 5 5.5 .8 -4 3.9 1 5.5 -5-2.6 -5 2.6 1-5.5 -4-3.9 5.5-.8z" fill="var(--gold)"/><path d="M185 104 l2.5 5 5.5 .8 -4 3.9 1 5.5 -5-2.6 -5 2.6 1-5.5 -4-3.9 5.5-.8z" fill="var(--gold)"/><path d="M198 104 l2.5 5 5.5 .8 -4 3.9 1 5.5 -5-2.6 -5 2.6 1-5.5 -4-3.9 5.5-.8z" fill="#CBD5E1"/><rect x="142" y="128" width="60" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/>
+      <path d="M40 36C41.2 42.8 41.2 42.8 48 44C41.2 45.2 41.2 45.2 40 52C38.8 45.2 38.8 45.2 32 44C38.8 42.8 38.8 42.8 40 36Z" fill="var(--gold)"/></svg></div>
   <div class="num">02</div>
   <div class="kicker">Module 2 of 8 · about 40 minutes</div>
   <h1>Know your customer with AI</h1>
@@ -209,16 +273,36 @@ Include follow-up probes and a short opening script.</pre></div>
   <h3>Find your customers' words</h3>
   <p>Turn real customer feedback into a short insight summary you can use in your next campaign.</p>
   <ol><li>Collect 30 to 100 real reviews, comments or survey answers. Remove names and contact details.</li><li>Run the starter prompt.</li><li>Check 5 of the quotes the AI used against the original text to make sure they are real.</li><li>Write down 3 customer phrases you will use in upcoming content.</li></ol>
-  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+  <div class="online">On the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/): the starter prompt and checklist for this task, 3 interactive activities, flashcards and the module quiz.</div>
 </div>
 <section class="chapter-open">
+  <div class="chapter-art"><svg class="art" viewBox="0 0 240 180" role="img" aria-label="A megaphone with a brand colour palette" xmlns="http://www.w3.org/2000/svg"><path d="M42 30C78 4 150 -4 196 24C236 48 246 104 222 140C196 178 128 186 78 170C30 154 2 120 8 84C12 60 22 44 42 30Z" fill="var(--primary)" opacity="0.14"/>
+      <g transform="translate(60 90)"><path d="M0 -16 L60 -46 L60 46 L0 16Z" fill="var(--gold)"/><rect x="-22" y="-18" width="26" height="36" rx="6" fill="var(--ink)"/><rect x="-10" y="18" width="12" height="26" rx="4" fill="var(--ink)"/>
+      <path d="M74 -24 q16 24 0 48 M88 -36 q26 36 0 72" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+      <circle cx="196" cy="48" r="11" fill="var(--primary)"/><circle cx="196" cy="78" r="11" fill="var(--blue)"/><circle cx="196" cy="108" r="11" fill="#E5484D"/></svg></div>
   <div class="num">03</div>
   <div class="kicker">Module 3 of 8 · about 40 minutes</div>
   <h1>Prompting and brand voice</h1>
   <div class="summary">A simple prompt structure for marketing, and a brand voice guide that makes AI drafts sound like you, not like everyone else.</div>
   <div class="learn"><b>In this chapter you will learn to</b><ul><li>Write prompts with the RCTFC structure</li><li>Create a brand voice guide for AI</li><li>Adapt tone by channel and audience</li></ul></div>
 </section>
-<section class="lesson"><h2><small>Lesson 3.1</small>The RCTFC prompt structure</h2>
+<section class="lesson"><h2><small>Lesson 3.1</small>The RCTFC prompt structure</h2><figure class="figure"><svg class="art" viewBox="0 0 640 150" role="img" aria-label="The five parts of a prompt: Role, Context, Task, Format, Checks" xmlns="http://www.w3.org/2000/svg">
+      
+        <g transform="translate(16 20)"><rect width="112" height="112" rx="16" fill="var(--ink)"/><text x="14" y="44" font-family="Archivo Black, sans-serif" font-size="32" fill="#fff">R</text>
+        <text x="14" y="70" font-family="DM Sans, sans-serif" font-weight="800" font-size="13" fill="#fff">Role</text>
+        <text x="14" y="88" text-anchor="start" font-family="DM Sans, sans-serif" font-size="10.5" font-weight="500" fill="#fff"><tspan x="14" dy="0">Who should it act</tspan><tspan x="14" dy="13.65">as?</tspan></text></g>
+        <g transform="translate(140 20)"><rect width="112" height="112" rx="16" fill="var(--primary)"/><text x="14" y="44" font-family="Archivo Black, sans-serif" font-size="32" fill="#fff">C</text>
+        <text x="14" y="70" font-family="DM Sans, sans-serif" font-weight="800" font-size="13" fill="#fff">Context</text>
+        <text x="14" y="88" text-anchor="start" font-family="DM Sans, sans-serif" font-size="10.5" font-weight="500" fill="#fff"><tspan x="14" dy="0">What is the</tspan><tspan x="14" dy="13.65">situation?</tspan></text></g>
+        <g transform="translate(264 20)"><rect width="112" height="112" rx="16" fill="var(--blue)"/><text x="14" y="44" font-family="Archivo Black, sans-serif" font-size="32" fill="#fff">T</text>
+        <text x="14" y="70" font-family="DM Sans, sans-serif" font-weight="800" font-size="13" fill="#fff">Task</text>
+        <text x="14" y="88" text-anchor="start" font-family="DM Sans, sans-serif" font-size="10.5" font-weight="500" fill="#fff"><tspan x="14" dy="0">What exactly to</tspan><tspan x="14" dy="13.65">do?</tspan></text></g>
+        <g transform="translate(388 20)"><rect width="112" height="112" rx="16" fill="var(--gold)"/><text x="14" y="44" font-family="Archivo Black, sans-serif" font-size="32" fill="var(--ink)">F</text>
+        <text x="14" y="70" font-family="DM Sans, sans-serif" font-weight="800" font-size="13" fill="var(--ink)">Format</text>
+        <text x="14" y="88" text-anchor="start" font-family="DM Sans, sans-serif" font-size="10.5" font-weight="500" fill="var(--ink)"><tspan x="14" dy="0">What should it</tspan><tspan x="14" dy="13.65">look like?</tspan></text></g>
+        <g transform="translate(512 20)"><rect width="112" height="112" rx="16" fill="#E5484D"/><text x="14" y="44" font-family="Archivo Black, sans-serif" font-size="32" fill="#fff">C</text>
+        <text x="14" y="70" font-family="DM Sans, sans-serif" font-weight="800" font-size="13" fill="#fff">Checks</text>
+        <text x="14" y="88" text-anchor="start" font-family="DM Sans, sans-serif" font-size="10.5" font-weight="500" fill="#fff"><tspan x="14" dy="0">Limits and what</tspan><tspan x="14" dy="13.65">to do if unsure</tspan></text></g></svg><figcaption>Five parts of a prompt that sounds like your brand.</figcaption></figure>
 <table>
 <tr><th>Part</th><th>Question it answers</th><th>Example</th></tr>
 <tr><td><strong>R</strong>ole</td><td>Who should the AI act as?</td><td>"Act as a senior copywriter for a premium coffee brand…"</td></tr>
@@ -247,7 +331,9 @@ Analyse them and write a one-page brand voice guide: voice in 3 words (with "thi
 Then write one new short post in this voice about [topic] so I can test the guide.
 
 [paste examples]</pre></div>
-<div class="callout example"><span class="label">Illustrative example</span><p>Save the guide in a document and paste it at the top of every content prompt, or save it in your AI tool's custom instructions or project settings if it has them. Consistency comes from using the same guide every time.</p></div></section><section class="lesson"><h2><small>Lesson 3.3</small>Iterating and adapting tone</h2>
+<div class="callout example"><span class="label">Illustrative example</span><p>Save the guide in a document and paste it at the top of every content prompt, or save it in your AI tool's custom instructions or project settings if it has them. Consistency comes from using the same guide every time.</p></div><div class="cmp"><div class="ch"><span>See the difference</span>Same request, with and without a voice guide</div><div class="row"><div><span class="tag w">Weak prompt</span><pre>Write a short email announcing our Saturday workshop.</pre></div><div><span class="tag a">AI replies</span><div>Dear Valued Customer,<br><br>We are excited to announce an exciting upcoming workshop this Saturday! This is a fantastic opportunity to learn new skills in a fun and engaging environment. Don't miss out on this amazing event!<br><br>Best regards,<br>The Team</div></div><div class="verdict w">Formal, empty and over-excited. Nobody would reply to this.</div></div><div class="row"><div><span class="tag s">Strong prompt</span><pre>Voice guide: friendly, practical, no hype. We say 'you', not 'valued customer'. Short sentences. Never use 'exciting' or 'amazing'.
+Example of our style: 'New stock in. Same great beans, slightly better price.'
+Task: email announcing a 2-hour home-barista workshop, Saturday 10am, 12 seats, $15.</pre></div><div><span class="tag a">AI replies</span><div>Subject: Make café-quality coffee at home (Saturday, 12 seats)<br><br>Hi,<br><br>This Saturday at 10am we're running a 2-hour home-barista workshop. You'll learn grind size, ratios and milk texture on real machines.<br><br>12 seats, $15 each. Reply to this email to book yours.<br><br>See you there,<br>Amina at Bean Street</div></div><div class="verdict s">Sounds like a real person, gives every detail and has one clear action.</div></div></div></section><section class="lesson"><h2><small>Lesson 3.3</small>Iterating and adapting tone</h2>
 <p>Treat every first draft as a draft. Short, specific follow-ups improve it quickly:</p>
 <ul>
   <li><strong>Sharper:</strong> "Make the first line stop the scroll. Give me 5 opening lines only."</li>
@@ -269,9 +355,12 @@ Keep the core offer identical. Change the angle, examples and tone for each. Und
   <h3>Write your brand voice guide</h3>
   <p>Create a voice guide you will paste into every content prompt from now on.</p>
   <ol><li>Collect 5 to 8 of your best-performing real posts, emails or pages.</li><li>Run the starter prompt to draft the voice guide.</li><li>Edit it: correct anything that does not feel like your brand and add your banned words.</li><li>Test it: write one post with the guide and one without, and compare them.</li></ol>
-  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+  <div class="online">On the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/): the starter prompt and checklist for this task, 3 interactive activities, flashcards and the module quiz.</div>
 </div>
 <section class="chapter-open">
+  <div class="chapter-art"><svg class="art" viewBox="0 0 240 180" role="img" aria-label="One idea fanned out into many content cards" xmlns="http://www.w3.org/2000/svg"><path d="M42 30C78 4 150 -4 196 24C236 48 246 104 222 140C196 178 128 186 78 170C30 154 2 120 8 84C12 60 22 44 42 30Z" fill="var(--gold)" opacity="0.16"/>
+      <g transform="rotate(-8 70 120)"><rect x="34" y="76" width="80" height="96" rx="12" fill="var(--ink)" opacity=".08"/><rect x="30" y="70" width="80" height="96" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".12"/><rect x="38" y="78" width="64" height="40" rx="8" fill="var(--blue)"/><rect x="38" y="128" width="56" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="38" y="140" width="40" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/></g><g transform="rotate(-2 120 96)"><rect x="84" y="52" width="80" height="96" rx="12" fill="var(--ink)" opacity=".08"/><rect x="80" y="46" width="80" height="96" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".12"/><rect x="88" y="54" width="64" height="40" rx="8" fill="var(--primary)"/><rect x="88" y="104" width="56" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="88" y="116" width="40" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/></g><g transform="rotate(6 174 112)"><rect x="138" y="68" width="80" height="96" rx="12" fill="var(--ink)" opacity=".08"/><rect x="134" y="62" width="80" height="96" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".12"/><rect x="142" y="70" width="64" height="40" rx="8" fill="var(--gold)"/><rect x="142" y="120" width="56" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/><rect x="142" y="132" width="40" height="5" rx="2.5" fill="var(--ink)" opacity="0.14"/></g>
+      <circle cx="120" cy="30" r="16" fill="var(--ink)"/><text x="120" y="35" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="13" fill="var(--gold)">1</text></svg></div>
   <div class="num">04</div>
   <div class="kicker">Module 4 of 8 · about 45 minutes</div>
   <h1>Content creation at scale</h1>
@@ -288,7 +377,15 @@ Posting frequency: [e.g. 3 per week on Instagram, 2 on LinkedIn, 1 email].
 Include key dates relevant to our audience and industry: [list any you know].
 Columns: date, channel, pillar, idea, format, call to action, owner.
 Balance the pillars evenly and avoid repeating the same format back to back.</pre></div>
-<div class="callout warn"><span class="label">Watch out</span><p>AI may suggest "awareness days" or holidays that do not exist or fall on different dates. Check every date before you schedule anything.</p></div></section><section class="lesson"><h2><small>Lesson 4.2</small>One idea, ten pieces</h2>
+<div class="callout warn"><span class="label">Watch out</span><p>AI may suggest "awareness days" or holidays that do not exist or fall on different dates. Check every date before you schedule anything.</p></div></section><section class="lesson"><h2><small>Lesson 4.2</small>One idea, ten pieces</h2><figure class="figure"><svg class="art" viewBox="0 0 640 170" role="img" aria-label="One webinar repurposed into posts, videos, an article, an email and quote cards" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(40 45)"><rect width="150" height="80" rx="16" fill="var(--ink)"/><text x="18" y="34" font-family="DM Sans, sans-serif" font-size="11" font-weight="800" fill="var(--gold)" letter-spacing="1.2">ONE SOURCE</text><text x="18" y="58" font-family="Archivo Black, sans-serif" font-size="16" fill="#fff">Webinar</text></g>
+      <path d="M190 85 C260 85 260 22 330 22" stroke="var(--primary)" stroke-width="2.5" fill="none"/>
+        <g transform="translate(330 8)"><rect width="170" height="26" rx="13" fill="var(--primary)"/><text x="14" y="17.5" font-family="DM Sans, sans-serif" font-weight="800" font-size="12" fill="#fff">5 social posts</text></g><path d="M190 85 C260 85 260 52 330 52" stroke="var(--primary)" stroke-width="2.5" fill="none"/>
+        <g transform="translate(330 38)"><rect width="170" height="26" rx="13" fill="var(--blue)"/><text x="14" y="17.5" font-family="DM Sans, sans-serif" font-weight="800" font-size="12" fill="#fff">3 short videos</text></g><path d="M190 85 C260 85 260 82 330 82" stroke="var(--primary)" stroke-width="2.5" fill="none"/>
+        <g transform="translate(330 68)"><rect width="170" height="26" rx="13" fill="var(--gold)"/><text x="14" y="17.5" font-family="DM Sans, sans-serif" font-weight="800" font-size="12" fill="var(--ink)">1 article</text></g><path d="M190 85 C260 85 260 112 330 112" stroke="var(--primary)" stroke-width="2.5" fill="none"/>
+        <g transform="translate(330 98)"><rect width="170" height="26" rx="13" fill="var(--ink)"/><text x="14" y="17.5" font-family="DM Sans, sans-serif" font-weight="800" font-size="12" fill="#fff">1 email</text></g><path d="M190 85 C260 85 260 142 330 142" stroke="var(--primary)" stroke-width="2.5" fill="none"/>
+        <g transform="translate(330 128)"><rect width="170" height="26" rx="13" fill="#E5484D"/><text x="14" y="17.5" font-family="DM Sans, sans-serif" font-weight="800" font-size="12" fill="#fff">5 quote cards</text></g>
+      <path d="M560 46C562.1 57.9 562.1 57.9 574 60C562.1 62.1 562.1 62.1 560 74C557.9 62.1 557.9 62.1 546 60C557.9 57.9 557.9 57.9 560 46Z" fill="var(--gold)"/><path d="M590 102C591.2 108.8 591.2 108.8 598 110C591.2 111.2 591.2 111.2 590 118C588.8 111.2 588.8 111.2 582 110C588.8 108.8 588.8 108.8 590 102Z" fill="var(--primary)"/></svg><figcaption>One strong source can feed a month of content.</figcaption></figure>
 <p>Repurposing is where AI saves the most time. Start from one strong piece of original content (a webinar, an interview, a report, a case study) and turn it into many.</p>
 <div class="prompt"><div class="ph">Repurpose a long piece</div><pre>Below is the transcript of our [webinar / interview / report].
 Turn it into:
@@ -318,9 +415,14 @@ It should be filmable on a phone by one person.</pre></div>
   <h3>Turn one asset into a week of content</h3>
   <p>Take one real piece of content you already have and repurpose it into a full week of posts.</p>
   <ol><li>Pick a real long-form asset: a webinar, presentation, report, interview or long post.</li><li>Get a transcript or the full text.</li><li>Run the starter prompt with your voice guide.</li><li>Edit every piece. Check every quote and fact against the original.</li></ol>
-  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+  <div class="online">On the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/): the starter prompt and checklist for this task, 3 interactive activities, flashcards and the module quiz.</div>
 </div>
 <section class="chapter-open">
+  <div class="chapter-art"><svg class="art" viewBox="0 0 240 180" role="img" aria-label="A phone with a chat thread and social icons around it" xmlns="http://www.w3.org/2000/svg"><path d="M42 30C78 4 150 -4 196 24C236 48 246 104 222 140C196 178 128 186 78 170C30 154 2 120 8 84C12 60 22 44 42 30Z" fill="var(--primary)" opacity="0.14"/>
+      <rect x="84" y="20" width="72" height="144" rx="16" fill="var(--ink)"/><rect x="90" y="32" width="60" height="120" rx="10" fill="#fff"/>
+      <rect x="96" y="40" width="44" height="18" rx="9" fill="#E9FBF0"/><rect x="104" y="64" width="40" height="18" rx="9" fill="var(--primary)" opacity=".85"/><rect x="96" y="88" width="48" height="18" rx="9" fill="#E9FBF0"/>
+      <rect x="108" y="112" width="36" height="18" rx="9" fill="var(--primary)" opacity=".85"/>
+      <circle cx="40" cy="50" r="16" fill="#E5484D"/><circle cx="40" cy="50" r="6" fill="#fff" opacity=".85"/><circle cx="194" cy="70" r="16" fill="var(--blue)"/><circle cx="194" cy="70" r="6" fill="#fff" opacity=".85"/><circle cx="44" cy="126" r="16" fill="var(--gold)"/><circle cx="44" cy="126" r="6" fill="#fff" opacity=".85"/><circle cx="196" cy="132" r="16" fill="var(--primary)"/><circle cx="196" cy="132" r="6" fill="#fff" opacity=".85"/></svg></div>
   <div class="num">05</div>
   <div class="kicker">Module 5 of 8 · about 40 minutes</div>
   <h1>Social media and messaging marketing</h1>
@@ -367,9 +469,14 @@ Lead with the main benefit, include the key detail a buyer needs (size, colour, 
   <h3>Build your reply library</h3>
   <p>Create ready-to-use replies for your most common customer questions.</p>
   <ol><li>List your 15 most frequent questions and comments from social media and messaging.</li><li>Gather the policies the answers depend on: delivery, returns, prices, hours.</li><li>Run the starter prompt with your voice guide.</li><li>Check every reply against policy, then save them as quick or saved replies in your tools.</li></ol>
-  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+  <div class="online">On the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/): the starter prompt and checklist for this task, 3 interactive activities, flashcards and the module quiz.</div>
 </div>
 <section class="chapter-open">
+  <div class="chapter-art"><svg class="art" viewBox="0 0 240 180" role="img" aria-label="An image frame with an AI pen and sparkles" xmlns="http://www.w3.org/2000/svg"><path d="M42 30C78 4 150 -4 196 24C236 48 246 104 222 140C196 178 128 186 78 170C30 154 2 120 8 84C12 60 22 44 42 30Z" fill="var(--blue)" opacity="0.12"/>
+      <rect x="48" y="36" width="130" height="104" rx="12" fill="var(--ink)" opacity=".08"/><rect x="44" y="30" width="130" height="104" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".12"/><rect x="54" y="40" width="110" height="84" rx="8" fill="var(--primary)" opacity=".25"/>
+      <circle cx="80" cy="64" r="11" fill="var(--gold)"/><path d="M54 124 L94 80 L118 104 L136 88 L164 124Z" fill="var(--primary)"/>
+      <g transform="translate(176 120) rotate(35)"><rect x="-6" y="-46" width="12" height="60" rx="4" fill="var(--ink)"/><path d="M-6 14 L0 30 L6 14Z" fill="var(--gold)"/></g>
+      <path d="M190 40C191.5 48.5 191.5 48.5 200 50C191.5 51.5 191.5 51.5 190 60C188.5 51.5 188.5 51.5 180 50C188.5 48.5 188.5 48.5 190 40Z" fill="var(--gold)"/><path d="M210 71C210.75 75.25 210.75 75.25 215 76C210.75 76.75 210.75 76.75 210 81C209.25 76.75 209.25 76.75 205 76C209.25 75.25 209.25 75.25 210 71Z" fill="var(--primary)"/></svg></div>
   <div class="num">06</div>
   <div class="kicker">Module 6 of 8 · about 40 minutes</div>
   <h1>Visuals and video with AI</h1>
@@ -417,16 +524,22 @@ Audience: [who]</pre></div>
   <h3>Create an on-brand visual set</h3>
   <p>Produce three on-brand visuals for an upcoming post, following your style rules.</p>
   <ol><li>Write down your brand colours, photo style and what to avoid.</li><li>Use the starter prompt to get 3 image prompts.</li><li>Generate the images in your tool, and add any text in a design tool.</li><li>Check each image against the rights and disclosure table.</li></ol>
-  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+  <div class="online">On the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/): the starter prompt and checklist for this task, 3 interactive activities, flashcards and the module quiz.</div>
 </div>
 <section class="chapter-open">
+  <div class="chapter-art"><svg class="art" viewBox="0 0 240 180" role="img" aria-label="A marketing funnel and a target" xmlns="http://www.w3.org/2000/svg"><path d="M42 30C78 4 150 -4 196 24C236 48 246 104 222 140C196 178 128 186 78 170C30 154 2 120 8 84C12 60 22 44 42 30Z" fill="var(--gold)" opacity="0.16"/>
+      <path d="M40 40 H200 L182 68 H58Z" fill="var(--primary)" opacity="0.35"/><path d="M60 72 H180 L162 100 H78Z" fill="var(--primary)" opacity="0.6"/><path d="M80 104 H160 L142 132 H98Z" fill="var(--primary)" opacity="0.9"/>
+      <rect x="104" y="136" width="32" height="20" rx="6" fill="var(--ink)"/>
+      <circle cx="196" cy="140" r="22" fill="#fff" stroke="var(--ink)" stroke-width="4"/><circle cx="196" cy="140" r="12" fill="none" stroke="var(--gold)" stroke-width="5"/><circle cx="196" cy="140" r="4" fill="var(--ink)"/>
+      <path d="M40 132C41.2 138.8 41.2 138.8 48 140C41.2 141.2 41.2 141.2 40 148C38.8 141.2 38.8 141.2 32 140C38.8 138.8 38.8 138.8 40 132Z" fill="var(--blue)"/></svg></div>
   <div class="num">07</div>
   <div class="kicker">Module 7 of 8 · about 45 minutes</div>
   <h1>Campaigns, ads and email</h1>
   <div class="summary">Write sharper campaign briefs, generate ad variations to test, improve landing pages and build email sequences that convert.</div>
   <div class="learn"><b>In this chapter you will learn to</b><ul><li>Write a campaign brief with AI</li><li>Create ad variations for testing</li><li>Draft landing pages and email sequences</li></ul></div>
 </section>
-<section class="lesson"><h2><small>Lesson 7.1</small>The campaign brief</h2>
+<section class="lesson"><h2><small>Lesson 7.1</small>The campaign brief</h2><figure class="figure"><svg class="art" viewBox="0 0 640 130" role="img" aria-label="The eight parts of a campaign brief" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(16 14)"><rect width="142" height="44" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".14"/><circle cx="22" cy="22" r="10" fill="var(--primary)"/><text x="22" y="26" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="10" fill="#fff">1</text><text x="40" y="27" font-family="DM Sans, sans-serif" font-weight="800" font-size="12.5" fill="var(--ink)">Objective</text></g><g transform="translate(170 14)"><rect width="142" height="44" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".14"/><circle cx="22" cy="22" r="10" fill="var(--primary)"/><text x="22" y="26" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="10" fill="#fff">2</text><text x="40" y="27" font-family="DM Sans, sans-serif" font-weight="800" font-size="12.5" fill="var(--ink)">Audience</text></g><g transform="translate(324 14)"><rect width="142" height="44" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".14"/><circle cx="22" cy="22" r="10" fill="var(--primary)"/><text x="22" y="26" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="10" fill="#fff">3</text><text x="40" y="27" font-family="DM Sans, sans-serif" font-weight="800" font-size="12.5" fill="var(--ink)">Insight</text></g><g transform="translate(478 14)"><rect width="142" height="44" rx="12" fill="var(--gold)" stroke="var(--ink)" stroke-opacity=".14"/><circle cx="22" cy="22" r="10" fill="var(--ink)"/><text x="22" y="26" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="10" fill="var(--gold)">4</text><text x="40" y="27" font-family="DM Sans, sans-serif" font-weight="800" font-size="12.5" fill="var(--ink)">One message</text></g><g transform="translate(16 68)"><rect width="142" height="44" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".14"/><circle cx="22" cy="22" r="10" fill="var(--primary)"/><text x="22" y="26" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="10" fill="#fff">5</text><text x="40" y="27" font-family="DM Sans, sans-serif" font-weight="800" font-size="12.5" fill="var(--ink)">Proof</text></g><g transform="translate(170 68)"><rect width="142" height="44" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".14"/><circle cx="22" cy="22" r="10" fill="var(--primary)"/><text x="22" y="26" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="10" fill="#fff">6</text><text x="40" y="27" font-family="DM Sans, sans-serif" font-weight="800" font-size="12.5" fill="var(--ink)">Offer</text></g><g transform="translate(324 68)"><rect width="142" height="44" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".14"/><circle cx="22" cy="22" r="10" fill="var(--primary)"/><text x="22" y="26" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="10" fill="#fff">7</text><text x="40" y="27" font-family="DM Sans, sans-serif" font-weight="800" font-size="12.5" fill="var(--ink)">Channels</text></g><g transform="translate(478 68)"><rect width="142" height="44" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".14"/><circle cx="22" cy="22" r="10" fill="var(--primary)"/><text x="22" y="26" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="10" fill="#fff">8</text><text x="40" y="27" font-family="DM Sans, sans-serif" font-weight="800" font-size="12.5" fill="var(--ink)">KPIs</text></g></svg><figcaption>The eight parts of a campaign brief. Number 4 matters most.</figcaption></figure>
 <p>A clear brief makes every later step faster, for you, your team, your agency and the AI.</p>
 <div class="prompt"><div class="ph">Campaign brief</div><pre>Help me write a one-page campaign brief. Ask me questions first if anything is missing.
 Sections: objective (one measurable goal), audience (from our research), key insight, single-minded message, proof points, offer, channels, budget, timeline, KPIs, and mandatory elements (logo, legal lines).
@@ -447,7 +560,9 @@ Mark which 2 you would test first and why.</pre></div>
   <li>Give each test enough budget and time to reach a meaningful number of results before deciding.</li>
   <li>Record what you learned in a simple test log, so you do not repeat tests.</li>
 </ul>
-<div class="callout warn"><span class="label">Watch out</span><p>Ads in sensitive categories (health, finance, employment, housing, politics) have extra platform rules and legal requirements. Check them before you write, and never let AI add claims you cannot prove.</p></div></section><section class="lesson"><h2><small>Lesson 7.3</small>Landing pages and email sequences</h2>
+<div class="callout warn"><span class="label">Watch out</span><p>Ads in sensitive categories (health, finance, employment, housing, politics) have extra platform rules and legal requirements. Check them before you write, and never let AI add claims you cannot prove.</p></div><div class="cmp"><div class="ch"><span>See the difference</span>Ad variations for testing</div><div class="row"><div><span class="tag w">Weak prompt</span><pre>Write 5 Facebook ads for our accounting software.</pre></div><div><span class="tag a">AI replies</span><div>1. Simplify your accounting today!<br>2. Make accounting easy with our software!<br>3. Accounting made simple!<br>4. The easy way to do your accounts!<br>5. Say goodbye to accounting stress!</div></div><div class="verdict w">Five versions of one idea. Testing these teaches you nothing.</div></div><div class="row"><div><span class="tag s">Strong prompt</span><pre>Write 4 Facebook ads for invoicing software for small business owners.
+Use a different angle for each: pain point, time saved, social proof (real fact: 2,300 businesses use it), direct offer (30-day free trial).
+Headline under 40 characters, primary text under 125.</pre></div><div><span class="tag a">AI replies</span><div>PAIN: "Still chasing unpaid invoices?" / Automatic reminders go out so you don't have to.<br>TIME: "Invoices done in 60 seconds" / Create, send and track from your phone.<br>PROOF: "2,300 businesses get paid faster" / Join owners who stopped chasing payments.<br>OFFER: "Try it free for 30 days" / No card needed. Send your first invoice today.</div></div><div class="verdict s">Genuinely different angles, so a test tells you which message your market responds to.</div></div></div></section><section class="lesson"><h2><small>Lesson 7.3</small>Landing pages and email sequences</h2>
 <div class="prompt"><div class="ph">Landing page review</div><pre>Review this landing page copy as a conversion copywriter.
 Check: is the main benefit clear in 5 seconds, does the headline match the ad, are objections answered, is there proof, is the call to action clear and repeated?
 Give me the top 5 changes in order of likely impact, and a rewritten headline and subheadline (3 options).
@@ -467,16 +582,30 @@ For each: 3 subject line options, preview text, and body under 150 words in our 
   <h3>Brief and build a mini campaign</h3>
   <p>Plan one real campaign and produce its ad variations and email.</p>
   <ol><li>Choose a real upcoming offer, launch or event.</li><li>Write the brief with AI, then stress-test it with the sceptical director prompt.</li><li>Produce 6 ad variations and pick 2 to test.</li><li>Write one email that supports the campaign.</li></ol>
-  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+  <div class="online">On the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/): the starter prompt and checklist for this task, 3 interactive activities, flashcards and the module quiz.</div>
 </div>
 <section class="chapter-open">
+  <div class="chapter-art"><svg class="art" viewBox="0 0 240 180" role="img" aria-label="A growth chart with an upward arrow" xmlns="http://www.w3.org/2000/svg"><path d="M42 30C78 4 150 -4 196 24C236 48 246 104 222 140C196 178 128 186 78 170C30 154 2 120 8 84C12 60 22 44 42 30Z" fill="var(--primary)" opacity="0.14"/>
+      <rect x="40" y="40" width="168" height="118" rx="12" fill="var(--ink)" opacity=".08"/><rect x="36" y="34" width="168" height="118" rx="12" fill="#fff" stroke="var(--ink)" stroke-opacity=".12"/>
+      <rect x="54" y="110" width="18" height="26" rx="5" fill="var(--primary)" opacity="0.4"/><rect x="82" y="96" width="18" height="40" rx="5" fill="var(--primary)" opacity="0.52"/><rect x="110" y="102" width="18" height="34" rx="5" fill="var(--primary)" opacity="0.64"/><rect x="138" y="78" width="18" height="58" rx="5" fill="var(--primary)" opacity="0.76"/><rect x="166" y="64" width="18" height="72" rx="5" fill="var(--gold)" opacity="1"/>
+      <path d="M58 104 L86 92 L114 98 L142 72 L172 52" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M160 50 L174 50 L172 64" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M210 21C211.35 28.65 211.35 28.65 219 30C211.35 31.35 211.35 31.35 210 39C208.65 31.35 208.65 31.35 201 30C208.65 28.65 208.65 28.65 210 21Z" fill="var(--gold)"/></svg></div>
   <div class="num">08</div>
   <div class="kicker">Module 8 of 8 · about 40 minutes</div>
   <h1>Measurement, ethics and your AI routine</h1>
   <div class="summary">Turn analytics into decisions, use AI honestly and legally, and build a weekly routine and team plan that makes the gains last.</div>
   <div class="learn"><b>In this chapter you will learn to</b><ul><li>Turn data into clear marketing reports</li><li>Apply core ethical and legal rules</li><li>Plan a 30-day team roll-out</li></ul></div>
 </section>
-<section class="lesson"><h2><small>Lesson 8.1</small>From analytics to decisions</h2>
+<section class="lesson"><h2><small>Lesson 8.1</small>From analytics to decisions</h2><figure class="figure"><svg class="art" viewBox="0 0 640 170" role="img" aria-label="A marketing funnel from awareness to action" xmlns="http://www.w3.org/2000/svg">
+      
+        <g transform="translate(40 10)"><rect width="560" height="32" rx="10" fill="var(--primary)" opacity="0.3"/>
+        <text x="280" y="21" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12.5" fill="var(--ink)"><tspan font-weight="800">Awareness</tspan> · Reach, views</text></g>
+        <g transform="translate(100 48)"><rect width="440" height="32" rx="10" fill="var(--primary)" opacity="0.53"/>
+        <text x="220" y="21" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12.5" fill="var(--ink)"><tspan font-weight="800">Interest</tspan> · Clicks, follows</text></g>
+        <g transform="translate(160 86)"><rect width="320" height="32" rx="10" fill="var(--primary)" opacity="0.76"/>
+        <text x="160" y="21" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12.5" fill="#fff"><tspan font-weight="800">Consideration</tspan> · Leads, sign-ups</text></g>
+        <g transform="translate(220 124)"><rect width="200" height="32" rx="10" fill="var(--primary)" opacity="0.99"/>
+        <text x="100" y="21" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12.5" fill="#fff"><tspan font-weight="800">Action</tspan> · Sales, bookings</text></g></svg><figcaption>Match each metric to the stage it measures.</figcaption></figure>
 <p>Most marketing reports list numbers. Good ones say <strong>what worked, why, and what to do next</strong>. Export your data, calculate key figures in a spreadsheet, then use AI to help interpret and write.</p>
 <div class="prompt"><div class="ph">Monthly performance summary</div><pre>Act as a marketing analyst. Below are this month's results by channel and campaign, with last month for comparison (percentage changes already calculated).
 1. Summarise the 3 most important findings in plain English.
@@ -524,7 +653,7 @@ Plain English, practical.</pre></div>
   <h3>Report, then plan your next 30 days</h3>
   <p>Produce a real performance summary and leave with a routine and a team plan.</p>
   <ol><li>Export last month's results and calculate the key changes in a spreadsheet.</li><li>Run the performance summary prompt and check every reason it suggests.</li><li>Write your weekly routine using the table in lesson 3.</li><li>Use the starter prompt to draft a 30-day team roll-out plan.</li></ol>
-  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+  <div class="online">On the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/): the starter prompt and checklist for this task, 3 interactive activities, flashcards and the module quiz.</div>
 </div>
 <section class="appendix">
   <h1>Prompt library</h1>
