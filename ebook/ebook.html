@@ -1,0 +1,648 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>AI for Marketing | AI Training Camp</title><style>
+@page { size: A4; margin: 22mm 20mm 24mm 20mm; }
+@page cover { margin: 0; }
+:root { --primary: #0C8F6A; --primary-deep: #08704F; --ink: #0F172A; --ink2: #334155; --muted: #64748B; --line: #E2E8F0; --gold: #FFB020; --blue: #4263EB; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: "DM Sans", system-ui, sans-serif; font-size: 10.6pt; line-height: 1.6; color: var(--ink2); }
+h1, h2, .display { font-family: "Archivo Black", "Arial Black", sans-serif; font-weight: 400; color: var(--ink); letter-spacing: -.005em; }
+h3 { font-size: 13pt; color: var(--ink); margin: 18pt 0 4pt; break-after: avoid; }
+p { margin: 0 0 8pt; }
+ul, ol { margin: 0 0 9pt; padding-left: 16pt; }
+li { margin: 2pt 0; }
+strong { color: var(--ink); }
+code { font-family: "Anonymous Pro", ui-monospace, monospace; font-size: 10pt; background: #F1F5F9; padding: 0 3pt; border-radius: 3pt; }
+table { width: 100%; border-collapse: collapse; margin: 8pt 0 12pt; font-size: 9.6pt; break-inside: avoid; }
+th { background: var(--ink); color: #fff; text-align: left; padding: 6pt 8pt; font-size: 9pt; }
+td { padding: 6pt 8pt; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:nth-child(even) td { background: #F8FAFC; }
+
+/* cover */
+.cover { page: cover; height: 297mm; width: 210mm; position: relative; overflow: hidden; background: var(--ink); color: #fff; break-after: page; }
+.cover .glow { position: absolute; right: -60mm; top: -60mm; width: 190mm; height: 190mm; border-radius: 50%; background: radial-gradient(circle at 40% 60%, var(--primary), transparent 62%); opacity: .75; }
+.cover .glow2 { position: absolute; left: -50mm; bottom: -70mm; width: 150mm; height: 150mm; border-radius: 50%; background: radial-gradient(circle, rgba(255,176,32,.45), transparent 65%); }
+.cover .bar { position: absolute; left: 0; right: 0; top: 0; height: 5mm; background: linear-gradient(90deg, var(--primary), var(--blue) 55%, var(--gold)); }
+.cover .inner { position: absolute; left: 22mm; right: 22mm; top: 70mm; }
+.cover .tag { display: inline-block; background: var(--gold); color: var(--ink); font-weight: 800; font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; padding: 4pt 9pt; border-radius: 20pt; }
+.cover h1 { color: #fff; font-size: 52pt; line-height: 1; margin: 16pt 0 14pt; }
+.cover .sub { font-size: 15pt; line-height: 1.45; color: #CBD5E1; max-width: 140mm; }
+.cover .foot { position: absolute; left: 22mm; right: 22mm; bottom: 22mm; display: flex; justify-content: space-between; align-items: end; font-size: 10pt; color: #94A3B8; }
+.cover .foot b { color: #fff; font-size: 12pt; display: block; }
+
+/* front matter */
+.front { break-after: page; }
+.front h2 { font-size: 24pt; margin: 0 0 12pt; }
+.toc { list-style: none; padding: 0; margin: 14pt 0 0; }
+.toc li { display: flex; gap: 12pt; align-items: baseline; padding: 8pt 0; border-bottom: 1px solid var(--line); }
+.toc .n { font-family: "Archivo Black", sans-serif; color: var(--primary); font-size: 12pt; width: 22pt; }
+.toc .t { color: var(--ink); font-weight: 700; font-size: 11.5pt; }
+.toc .s { display: block; color: var(--muted); font-weight: 400; font-size: 9.5pt; }
+.howbox { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8pt; margin: 14pt 0; }
+.howbox div { border: 1px solid var(--line); border-radius: 8pt; padding: 10pt; font-size: 9.6pt; }
+.howbox b { display: block; color: var(--ink); font-size: 11pt; margin-bottom: 3pt; }
+.path { margin: 10pt 0 0; }
+.path div { display: flex; gap: 10pt; padding: 7pt 0; border-bottom: 1px dashed var(--line); }
+.path .k { font-family: "Archivo Black", sans-serif; color: var(--primary); width: 62pt; flex: none; font-size: 9pt; padding-top: 2pt; }
+
+/* chapter */
+.chapter-open { break-before: page; padding-top: 30mm; }
+.chapter-open .num { font-family: "Archivo Black", sans-serif; font-size: 72pt; line-height: 1; color: var(--primary); }
+.chapter-open .kicker { font-size: 9pt; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-top: 8pt; }
+.chapter-open h1 { font-size: 30pt; line-height: 1.08; margin: 6pt 0 12pt; }
+.chapter-open .summary { font-size: 13pt; line-height: 1.5; color: var(--ink2); max-width: 150mm; }
+.learn { margin: 18pt 0 0; border-left: 3pt solid var(--gold); padding: 6pt 0 6pt 12pt; }
+.learn b { display: block; font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 4pt; }
+.lesson { margin-top: 22pt; }
+.lesson h2 { font-size: 18pt; line-height: 1.2; margin: 0 0 10pt; padding-top: 10pt; border-top: 2pt solid var(--ink); break-after: avoid; }
+.lesson h2 small { display: block; font-family: "DM Sans", sans-serif; font-size: 8.5pt; letter-spacing: .14em; text-transform: uppercase; color: var(--primary-deep); margin-bottom: 3pt; }
+
+.callout { border-radius: 7pt; padding: 9pt 12pt; margin: 10pt 0 12pt; border: 1px solid; break-inside: avoid; font-size: 10pt; }
+.callout .label { display: block; font-size: 8pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 3pt; }
+.callout p:last-child { margin-bottom: 0; }
+.callout.tip { background: #E6FCF5; border-color: #B2F2DB; } .callout.tip .label { color: #087F5B; }
+.callout.warn { background: #FFF8E6; border-color: #FFD98A; } .callout.warn .label { color: #8A5A00; }
+.callout.example { background: #EEF2FF; border-color: #C5D0FA; } .callout.example .label { color: #2F49C2; }
+
+.prompt { background: #0F172A; color: #E2E8F0; border-radius: 7pt; margin: 10pt 0 12pt; break-inside: avoid; overflow: hidden; }
+.prompt .ph { background: #1E293B; color: var(--gold); font-size: 8pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 5pt 11pt; }
+.prompt pre { margin: 0; padding: 9pt 11pt; white-space: pre-wrap; font-family: "Anonymous Pro", ui-monospace, monospace; font-size: 9.4pt; line-height: 1.5; }
+
+.apply { margin-top: 20pt; border: 2pt solid var(--ink); border-radius: 9pt; padding: 13pt 15pt; break-inside: avoid; }
+.apply .k { font-size: 8.5pt; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--primary-deep); }
+.apply h3 { margin: 3pt 0 5pt; font-size: 14pt; }
+.apply .online { margin-top: 8pt; font-size: 9.4pt; color: var(--muted); }
+
+.appendix { break-before: page; }
+.appendix h1 { font-size: 28pt; margin: 0 0 6pt; }
+.appendix .group { font-family: "Archivo Black", sans-serif; color: var(--primary); font-size: 12pt; margin: 18pt 0 4pt; break-after: avoid; }
+.back { break-before: page; padding-top: 80mm; text-align: center; }
+.back h2 { font-size: 22pt; }
+</style></head><body>
+<section class="cover">
+  <div class="bar"></div><div class="glow"></div><div class="glow2"></div>
+  <div class="inner">
+    <span class="tag">AI Training Camp · Course book</span>
+    <h1>AI for Marketing</h1>
+    <div class="sub">A practical guide to using AI tools for customer insight, content, campaigns and measurement</div>
+  </div>
+  <div class="foot"><div><b>8 modules</b>Lessons, worked examples and ready-to-use prompts</div><div>Edition 1 · 2026</div></div>
+</section>
+<section class="front">
+  <h2>How to use this book</h2>
+  <p>A hands-on course for marketers, communications teams and business owners. Use AI to understand customers, write in your brand voice, produce content for every channel and prove what works, without losing quality or trust.</p>
+  <p>Built for marketing and communications teams in businesses, NGOs and agencies anywhere in the world. No technical background needed.</p>
+  <div class="howbox">
+    <div><b>Read</b>Each chapter is one module of the course, with short lessons, worked examples and prompts you can copy into ChatGPT, Claude, Gemini or Copilot.</div>
+    <div><b>Apply</b>Each chapter ends with a hands-on task from real work. The full task, checklist and quiz are on the learning site.</div>
+    <div><b>Keep</b>The appendix collects every prompt in one place. Replace anything in [square brackets] with your own details.</div>
+  </div>
+  <h3>Your growth path</h3>
+  <div class="path"><div><span class="k">STAGE 1</span><span><strong>Foundations.</strong> Understand what AI can do for marketing, and start from real customer insight.</span></div><div><span class="k">STAGE 2</span><span><strong>Core skills.</strong> Write prompts that sound like your brand, and produce content at scale.</span></div><div><span class="k">STAGE 3</span><span><strong>Channels and campaigns.</strong> Apply AI to social, messaging, visuals, ads and email.</span></div><div><span class="k">STAGE 4</span><span><strong>Lead the change.</strong> Measure results, stay ethical, and build a team routine.</span></div></div>
+  <p style="margin-top:14pt">Learning site: <strong>https://zionkiwiamarshall-dot.github.io/ai-for-marketing/</strong></p>
+</section>
+<section class="front">
+  <h2>Contents</h2>
+  <ul class="toc">
+    <li><span class="n">01</span><span class="t">AI foundations for marketers<span class="s">What today's AI tools can do across text, images, video and audio, where they genuinely help marketers, and why your judgement matters more than ever.</span></span></li><li><span class="n">02</span><span class="t">Know your customer with AI<span class="s">Use AI to turn reviews, comments, surveys and interviews into clear customer insight, and build personas grounded in real data, not guesswork.</span></span></li><li><span class="n">03</span><span class="t">Prompting and brand voice<span class="s">A simple prompt structure for marketing, and a brand voice guide that makes AI drafts sound like you, not like everyone else.</span></span></li><li><span class="n">04</span><span class="t">Content creation at scale<span class="s">Plan content pillars and calendars, turn one idea into ten pieces, and write blogs and video scripts faster, without flooding your channels with filler.</span></span></li><li><span class="n">05</span><span class="t">Social media and messaging marketing<span class="s">Write for each platform, manage comments and DMs faster, and use AI with WhatsApp and other messaging channels while respecting customers' consent.</span></span></li><li><span class="n">06</span><span class="t">Visuals and video with AI<span class="s">Brief image and video tools well, keep visuals on-brand, and understand the rights, disclosure and authenticity rules that protect your reputation.</span></span></li><li><span class="n">07</span><span class="t">Campaigns, ads and email<span class="s">Write sharper campaign briefs, generate ad variations to test, improve landing pages and build email sequences that convert.</span></span></li><li><span class="n">08</span><span class="t">Measurement, ethics and your AI routine<span class="s">Turn analytics into decisions, use AI honestly and legally, and build a weekly routine and team plan that makes the gains last.</span></span></li>
+    <li><span class="n">A</span><span class="t">Prompt library<span class="s">Every prompt in the book, grouped by chapter</span></span></li>
+  </ul>
+</section>
+<section class="chapter-open">
+  <div class="num">01</div>
+  <div class="kicker">Module 1 of 8 · about 35 minutes</div>
+  <h1>AI foundations for marketers</h1>
+  <div class="summary">What today's AI tools can do across text, images, video and audio, where they genuinely help marketers, and why your judgement matters more than ever.</div>
+  <div class="learn"><b>In this chapter you will learn to</b><ul><li>Explain how AI tools generate content</li><li>Pick the right tool type for a task</li><li>Spot generic AI-sounding output</li></ul></div>
+</section>
+<section class="lesson"><h2><small>Lesson 1.1</small>What AI tools are, in plain terms</h2>
+<p>AI chat tools such as <strong>ChatGPT, Claude, Gemini and Microsoft Copilot</strong> are built on large language models. They have learned patterns from a huge amount of text and predict what words should come next. That is why they write fluent captions, outlines and emails in seconds.</p>
+<p>The same idea powers other tools: image generators create pictures from descriptions, and video and voice tools generate clips, edits and voiceovers. Together they can produce a draft of almost any marketing asset.</p>
+<h3>What this means for marketers</h3>
+<ol>
+  <li><strong>Speed is no longer the edge.</strong> Everyone can now produce content quickly. Your advantage is insight, taste and knowing your customer.</li>
+  <li><strong>Average in, average out.</strong> A vague prompt gives the most typical answer, and typical is forgettable. Specific input gives distinctive output.</li>
+  <li><strong>It can be wrong.</strong> AI tools can invent statistics, quotes, product features and trends. Every claim you publish must be checked.</li>
+</ol>
+<div class="callout tip"><span class="label">Tip</span><p>Think of AI as a tireless junior copywriter and researcher. Great at volume and first drafts. You are still the creative director.</p></div>
+<h3>The main tool types</h3>
+<table>
+<tr><th>Tool type</th><th>Examples</th><th>Good for</th></tr>
+<tr><td>AI chat</td><td>ChatGPT, Claude, Gemini, Copilot</td><td>Research summaries, strategy drafts, copy, scripts, ideas</td></tr>
+<tr><td>Image generation and editing</td><td>ChatGPT images, Adobe Firefly, Midjourney, Canva AI tools</td><td>Concepts, backgrounds, mock-ups, quick edits</td></tr>
+<tr><td>Video and audio</td><td>CapCut, Descript, video generators, AI voice tools</td><td>Editing, captions, short clips, voiceovers</td></tr>
+<tr><td>AI in marketing platforms</td><td>Features in Meta, Google Ads, HubSpot, Mailchimp</td><td>Ad variations, audience suggestions, send-time and subject line help</td></tr>
+</table></section><section class="lesson"><h2><small>Lesson 1.2</small>Where AI helps most, and where it hurts</h2>
+<table>
+<tr><th>Strong uses</th><th>Weak or risky uses</th></tr>
+<tr><td>Turning one idea into many formats</td><td>Publishing first drafts without editing</td></tr>
+<tr><td>Summarising reviews, surveys and comments</td><td>Inventing statistics or customer quotes</td></tr>
+<tr><td>Drafting briefs, calendars and outlines</td><td>Copying a competitor's style or content</td></tr>
+<tr><td>Writing many ad and subject line variations to test</td><td>Fake reviews or testimonials</td></tr>
+<tr><td>Rewriting for a different audience or channel</td><td>Realistic images of real people without consent</td></tr>
+<tr><td>Scripts and shot lists for short videos</td><td>Trusting AI for "current trends" without checking</td></tr>
+</table>
+<div class="callout example"><span class="label">Illustrative example</span><p>A two-person marketing team at a growing skincare brand used to publish three posts a week. They now hold one 45-minute planning session with AI each Monday, produce a week of drafts in an hour and spend the saved time filming real customer videos. Their engagement rose, and the reason was not the AI copy. It was the real content they finally had time to make.</p></div>
+<h3>The real opportunity</h3>
+<p>AI saves the most time on <strong>first drafts, repurposing, research summaries and variations</strong>. Use that time for things AI cannot do: talking to customers, building partnerships, creating original content and making sharp creative decisions.</p></section><section class="lesson"><h2><small>Lesson 1.3</small>Avoiding the generic AI voice</h2>
+<p>Audiences are learning to recognise AI-written content, and it costs trust. Common signs:</p>
+<ul>
+  <li>Openers like "In today's fast-paced world…" or "Are you ready to take your X to the next level?"</li>
+  <li>Words such as "unlock", "elevate", "seamless", "game-changer", "dive in"</li>
+  <li>Lists of three adjectives, too many emojis, and every sentence the same length</li>
+  <li>Claims with no specifics: "high quality", "best in class", "trusted by many"</li>
+</ul>
+<div class="prompt"><div class="ph">Strip out the AI voice</div><pre>Edit the text below so it sounds like a real person from our brand wrote it.
+Remove clichés (e.g. "unlock", "elevate", "game-changer", "in today's world"), cut filler, vary sentence length, and replace vague claims with specific ones, using only the facts I give you.
+If a claim has no supporting fact, mark it [NEEDS PROOF].
+
+Facts about our product: [list]
+Text: [paste]</pre></div>
+<div class="callout warn"><span class="label">Watch out</span><p>Never publish a statistic, award, customer number or quote that AI produced unless you can trace it to a real source. Invented "facts" are the fastest way to lose credibility.</p></div></section>
+<div class="apply">
+  <div class="k">Apply it at work</div>
+  <h3>Audit your content week</h3>
+  <p>Find where AI would save you the most time in your actual marketing work.</p>
+  <ol><li>List every marketing task you did in the last two weeks, including small ones like resizing images or replying to comments.</li><li>Run the starter prompt with your list.</li><li>Challenge the result. Move anything where AI would be the only source of facts or creativity to the risky column.</li><li>Pick three tasks to try during this course and note them.</li></ol>
+  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+</div>
+<section class="chapter-open">
+  <div class="num">02</div>
+  <div class="kicker">Module 2 of 8 · about 40 minutes</div>
+  <h1>Know your customer with AI</h1>
+  <div class="summary">Use AI to turn reviews, comments, surveys and interviews into clear customer insight, and build personas grounded in real data, not guesswork.</div>
+  <div class="learn"><b>In this chapter you will learn to</b><ul><li>Mine reviews and comments for insight</li><li>Build data-based personas</li><li>Design better surveys and interviews</li></ul></div>
+</section>
+<section class="lesson"><h2><small>Lesson 2.1</small>Mining what customers already say</h2>
+<p>Your customers are already telling you what they want, in reviews, comments, support messages, sales call notes and survey answers. Reading hundreds of them takes days. AI can summarise them in minutes, and you check the conclusions against the raw comments.</p>
+<div class="prompt"><div class="ph">Review and comment analysis</div><pre>Below are [number] customer reviews and comments about [product/service] (names removed).
+Analyse them and give me:
+1. The top 5 things customers value, each with 2 short example quotes copied exactly from the text.
+2. The top 5 complaints or frustrations, with example quotes.
+3. The exact words customers use to describe the problem we solve (useful for ad copy).
+4. Any surprising or unexpected themes.
+Only use what is in the text. Do not invent quotes.
+
+[paste comments]</pre></div>
+<div class="callout tip"><span class="label">Tip</span><p>Point 3, the customer's own words, is gold. The phrases real customers use usually make better headlines than anything a copywriter or an AI invents.</p></div>
+<div class="callout warn"><span class="label">Watch out</span><p>Remove names, phone numbers, emails and order numbers before pasting customer data into an AI tool, and follow your organisation's data policy and local data protection law.</p></div></section><section class="lesson"><h2><small>Lesson 2.2</small>Personas grounded in real data</h2>
+<p>AI will happily invent a persona called "Busy Sarah, 34, loves yoga". That is fiction. A useful persona comes from <strong>your</strong> data: interviews, sales notes, analytics and reviews.</p>
+<div class="prompt"><div class="ph">Build a data-based persona</div><pre>Using only the research notes below, build up to 3 customer personas.
+For each: who they are (role, situation), main goal, biggest frustration, what triggers them to look for a solution, objections before buying, where they look for information, and 3 exact phrases from the notes that capture their voice.
+If the data does not support a detail, write "unknown, needs research" rather than guessing.
+
+[paste research notes, survey summaries, sales notes]</pre></div>
+<div class="callout example"><span class="label">Illustrative example</span><p>A training company assumed its buyers were HR managers. Analysis of 60 enquiry emails showed most first contact came from team leaders who had a specific problem and then convinced HR. The company rewrote its ads for team leaders and halved its cost per enquiry.</p></div>
+<h3>Competitor scans</h3>
+<p>AI can help structure a competitor review: what they promise, who they target, how they price, what their reviews praise and criticise. Paste in what you collected from their websites and reviews. Do not rely on the AI's memory of a competitor, which may be outdated or wrong.</p></section><section class="lesson"><h2><small>Lesson 2.3</small>Better surveys and interviews</h2>
+<p>Bad questions give useless answers. AI is good at spotting leading or confusing questions and suggesting better ones.</p>
+<div class="prompt"><div class="ph">Improve a survey</div><pre>Review my customer survey below.
+Flag questions that are leading, double-barrelled, confusing or likely to give useless answers, and suggest a better version of each.
+Keep it under [number] questions and under 5 minutes to complete. Suggest the best order.
+
+[paste survey]</pre></div>
+<div class="prompt"><div class="ph">Customer interview guide</div><pre>Create a 20-minute customer interview guide to understand why customers chose [product] and what nearly stopped them.
+Use open questions about past behaviour (what they did), not hypotheticals (what they would do).
+Include follow-up probes and a short opening script.</pre></div>
+<div class="callout tip"><span class="label">Tip</span><p>After interviews, paste your notes (anonymised) and ask the AI to compare answers across customers: "Where do these 8 interviews agree, and where do they differ?"</p></div></section>
+<div class="apply">
+  <div class="k">Apply it at work</div>
+  <h3>Find your customers' words</h3>
+  <p>Turn real customer feedback into a short insight summary you can use in your next campaign.</p>
+  <ol><li>Collect 30 to 100 real reviews, comments or survey answers. Remove names and contact details.</li><li>Run the starter prompt.</li><li>Check 5 of the quotes the AI used against the original text to make sure they are real.</li><li>Write down 3 customer phrases you will use in upcoming content.</li></ol>
+  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+</div>
+<section class="chapter-open">
+  <div class="num">03</div>
+  <div class="kicker">Module 3 of 8 · about 40 minutes</div>
+  <h1>Prompting and brand voice</h1>
+  <div class="summary">A simple prompt structure for marketing, and a brand voice guide that makes AI drafts sound like you, not like everyone else.</div>
+  <div class="learn"><b>In this chapter you will learn to</b><ul><li>Write prompts with the RCTFC structure</li><li>Create a brand voice guide for AI</li><li>Adapt tone by channel and audience</li></ul></div>
+</section>
+<section class="lesson"><h2><small>Lesson 3.1</small>The RCTFC prompt structure</h2>
+<table>
+<tr><th>Part</th><th>Question it answers</th><th>Example</th></tr>
+<tr><td><strong>R</strong>ole</td><td>Who should the AI act as?</td><td>"Act as a senior copywriter for a premium coffee brand…"</td></tr>
+<tr><td><strong>C</strong>ontext</td><td>What is the situation?</td><td>"…we are launching a cold brew to office workers aged 25 to 40…"</td></tr>
+<tr><td><strong>T</strong>ask</td><td>What exactly should it produce?</td><td>"…write 5 Instagram captions for launch week…"</td></tr>
+<tr><td><strong>F</strong>ormat</td><td>What should it look like?</td><td>"…under 40 words each, one emoji max, end with a question…"</td></tr>
+<tr><td><strong>C</strong>hecks</td><td>What rules and limits apply?</td><td>"…use only the product facts below; no health claims; avoid the words 'elevate' and 'unlock'."</td></tr>
+</table>
+<div class="prompt"><div class="ph">Launch captions (RCTFC)</div><pre>Role: Act as a senior social media copywriter.
+Context: We are [brand], selling [product] to [audience]. Key facts: [3 to 5 facts]. Our voice: [3 words, e.g. warm, witty, direct].
+Task: Write 5 Instagram captions for launch week, each with a different angle (problem, benefit, behind the scenes, customer, offer).
+Format: Under 40 words each, one emoji max, end with a question or a clear call to action.
+Checks: Use only the facts given. No claims we cannot prove. Avoid: "elevate", "unlock", "game-changer".</pre></div>
+<div class="callout tip"><span class="label">Tip</span><p>Ask for options with <strong>different angles</strong>, not just "5 captions". Otherwise you get five versions of the same idea.</p></div></section><section class="lesson"><h2><small>Lesson 3.2</small>A brand voice guide for AI</h2>
+<p>The single best way to make AI sound like your brand is to give it a short voice guide <strong>and real examples</strong> every time. Examples beat descriptions.</p>
+<h3>What goes in the guide</h3>
+<ul>
+  <li><strong>Who we are</strong> in two sentences</li>
+  <li><strong>Voice in 3 words</strong>, each with "this, not that" (for example: confident, not arrogant)</li>
+  <li><strong>Words we use</strong> and <strong>words we never use</strong></li>
+  <li><strong>Rules:</strong> sentence length, emoji use, how we address the reader, spelling style</li>
+  <li><strong>3 to 5 examples</strong> of our best real posts or emails</li>
+</ul>
+<div class="prompt"><div class="ph">Create a voice guide from examples</div><pre>Below are 6 pieces of content our audience responded well to.
+Analyse them and write a one-page brand voice guide: voice in 3 words (with "this, not that"), typical sentence length, vocabulary we use, words to avoid, how we open and close, emoji and punctuation habits.
+Then write one new short post in this voice about [topic] so I can test the guide.
+
+[paste examples]</pre></div>
+<div class="callout example"><span class="label">Illustrative example</span><p>Save the guide in a document and paste it at the top of every content prompt, or save it in your AI tool's custom instructions or project settings if it has them. Consistency comes from using the same guide every time.</p></div></section><section class="lesson"><h2><small>Lesson 3.3</small>Iterating and adapting tone</h2>
+<p>Treat every first draft as a draft. Short, specific follow-ups improve it quickly:</p>
+<ul>
+  <li><strong>Sharper:</strong> "Make the first line stop the scroll. Give me 5 opening lines only."</li>
+  <li><strong>Different reader:</strong> "Rewrite for a busy finance director, not a consumer."</li>
+  <li><strong>Different channel:</strong> "Turn this into a LinkedIn post, then a 15-second video script."</li>
+  <li><strong>Critique:</strong> "Score this from 1 to 10 for clarity and persuasion, and explain how to reach 9."</li>
+  <li><strong>Keep and fix:</strong> "Keep everything except the ending, which is too salesy."</li>
+</ul>
+<div class="prompt"><div class="ph">Ask before writing</div><pre>Before you write anything, ask me up to 5 questions about the audience, goal, offer and tone that you would need to do this really well. Wait for my answers.
+
+Task: [describe the content]</pre></div>
+<div class="prompt"><div class="ph">Same message, many readers</div><pre>Rewrite the message below for 3 audiences: [audience 1], [audience 2], [audience 3].
+Keep the core offer identical. Change the angle, examples and tone for each. Under 80 words each.
+
+[paste message]</pre></div>
+<div class="callout warn"><span class="label">Watch out</span><p>If a long chat starts producing worse results, start a fresh chat and paste in your voice guide and a complete prompt.</p></div></section>
+<div class="apply">
+  <div class="k">Apply it at work</div>
+  <h3>Write your brand voice guide</h3>
+  <p>Create a voice guide you will paste into every content prompt from now on.</p>
+  <ol><li>Collect 5 to 8 of your best-performing real posts, emails or pages.</li><li>Run the starter prompt to draft the voice guide.</li><li>Edit it: correct anything that does not feel like your brand and add your banned words.</li><li>Test it: write one post with the guide and one without, and compare them.</li></ol>
+  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+</div>
+<section class="chapter-open">
+  <div class="num">04</div>
+  <div class="kicker">Module 4 of 8 · about 45 minutes</div>
+  <h1>Content creation at scale</h1>
+  <div class="summary">Plan content pillars and calendars, turn one idea into ten pieces, and write blogs and video scripts faster, without flooding your channels with filler.</div>
+  <div class="learn"><b>In this chapter you will learn to</b><ul><li>Plan content pillars and a calendar</li><li>Repurpose one asset into many</li><li>Draft blog posts and video scripts</li></ul></div>
+</section>
+<section class="lesson"><h2><small>Lesson 4.1</small>Pillars and calendars</h2>
+<p>Content pillars are the 3 to 5 themes your brand talks about consistently. They keep content focused and make planning easy.</p>
+<div class="prompt"><div class="ph">Content pillars</div><pre>We are [brand], helping [audience] with [problem]. Our goals this quarter: [goals].
+Suggest 4 content pillars. For each: why it matters to our audience, 5 post ideas, and which format suits it best (carousel, short video, story, article, email).
+Base ideas on these customer insights: [paste insights from Module 2].</pre></div>
+<div class="prompt"><div class="ph">Monthly calendar</div><pre>Using these pillars [paste], create a content calendar for [month] for [channels].
+Posting frequency: [e.g. 3 per week on Instagram, 2 on LinkedIn, 1 email].
+Include key dates relevant to our audience and industry: [list any you know].
+Columns: date, channel, pillar, idea, format, call to action, owner.
+Balance the pillars evenly and avoid repeating the same format back to back.</pre></div>
+<div class="callout warn"><span class="label">Watch out</span><p>AI may suggest "awareness days" or holidays that do not exist or fall on different dates. Check every date before you schedule anything.</p></div></section><section class="lesson"><h2><small>Lesson 4.2</small>One idea, ten pieces</h2>
+<p>Repurposing is where AI saves the most time. Start from one strong piece of original content (a webinar, an interview, a report, a case study) and turn it into many.</p>
+<div class="prompt"><div class="ph">Repurpose a long piece</div><pre>Below is the transcript of our [webinar / interview / report].
+Turn it into:
+- 5 short social posts, each built on one specific insight
+- 1 LinkedIn article outline
+- 3 short video ideas (hook, main point, call to action)
+- 1 email newsletter section (under 150 words)
+- 5 quote cards: exact quotes from the transcript, under 20 words each
+Use only what is in the transcript. Keep our voice: [paste voice guide].
+
+[paste transcript]</pre></div>
+<div class="callout example"><span class="label">Illustrative example</span><p>A 40-minute customer panel recording became a month of content: 12 posts, 4 short clips, 2 emails and a blog post. The team spent one afternoon editing instead of two weeks writing from scratch.</p></div>
+<div class="callout tip"><span class="label">Tip</span><p>Most video and meeting tools can export a transcript automatically. That transcript is your best raw material.</p></div></section><section class="lesson"><h2><small>Lesson 4.3</small>Blogs, SEO basics and video scripts</h2>
+<h3>Blog posts that are worth reading</h3>
+<p>Search engines and readers reward content that is genuinely helpful and shows real experience. Use AI for the structure and first draft, then add what only you have: real examples, data, opinions and expertise.</p>
+<div class="prompt"><div class="ph">Blog outline</div><pre>Create an outline for a blog post answering: "[the question your customer types into a search engine]".
+Audience: [who]. Goal: [what they should do after reading].
+Include: a working title, the questions a reader would want answered (as H2 headings), where to add our own examples or data [ADD OUR EXAMPLE], and a short meta description under 155 characters.</pre></div>
+<h3>Short video scripts</h3>
+<div class="prompt"><div class="ph">15 to 30 second video script</div><pre>Write 3 short video scripts (15 to 30 seconds) about [topic] for [platform].
+Each script: a hook in the first 2 seconds, the main point, and a call to action.
+Show it as a table: time, what we see on screen, what is said, on-screen text.
+It should be filmable on a phone by one person.</pre></div>
+<div class="callout warn"><span class="label">Watch out</span><p>Publishing large volumes of unedited AI content can hurt your brand and your search rankings. Fewer, better pieces beat many generic ones.</p></div></section>
+<div class="apply">
+  <div class="k">Apply it at work</div>
+  <h3>Turn one asset into a week of content</h3>
+  <p>Take one real piece of content you already have and repurpose it into a full week of posts.</p>
+  <ol><li>Pick a real long-form asset: a webinar, presentation, report, interview or long post.</li><li>Get a transcript or the full text.</li><li>Run the starter prompt with your voice guide.</li><li>Edit every piece. Check every quote and fact against the original.</li></ol>
+  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+</div>
+<section class="chapter-open">
+  <div class="num">05</div>
+  <div class="kicker">Module 5 of 8 · about 40 minutes</div>
+  <h1>Social media and messaging marketing</h1>
+  <div class="summary">Write for each platform, manage comments and DMs faster, and use AI with WhatsApp and other messaging channels while respecting customers' consent.</div>
+  <div class="learn"><b>In this chapter you will learn to</b><ul><li>Adapt content per platform</li><li>Speed up community replies</li><li>Plan messaging campaigns with consent</li></ul></div>
+</section>
+<section class="lesson"><h2><small>Lesson 5.1</small>Writing for each platform</h2>
+<p>Each platform rewards different behaviour. AI can adapt one message to each, if you tell it the rules.</p>
+<table>
+<tr><th>Platform</th><th>What tends to work</th></tr>
+<tr><td>Instagram</td><td>Strong visual, short caption with a hook, carousels that teach, Reels</td></tr>
+<tr><td>TikTok</td><td>Native-feeling short video, hook in the first 2 seconds, trends used with your own twist</td></tr>
+<tr><td>LinkedIn</td><td>Personal insight and lessons, clear first two lines, professional but human</td></tr>
+<tr><td>Facebook</td><td>Community, local groups, events, longer captions are fine</td></tr>
+<tr><td>X (Twitter)</td><td>Short, sharp opinions, threads for depth</td></tr>
+</table>
+<div class="prompt"><div class="ph">Adapt across platforms</div><pre>Adapt this core message for Instagram, LinkedIn, TikTok (as a video idea) and Facebook.
+Follow what usually works on each platform. Keep our voice: [paste voice guide].
+Core message: [paste]
+Call to action: [what we want people to do]</pre></div>
+<div class="callout tip"><span class="label">Tip</span><p>Platform best practice changes often. Check what is working now by looking at your own analytics and at accounts in your niche, not just at the AI's general advice.</p></div></section><section class="lesson"><h2><small>Lesson 5.2</small>Comments, DMs and community</h2>
+<p>Fast, human replies build loyalty. AI can draft replies to common questions so you respond in minutes, not days.</p>
+<div class="prompt"><div class="ph">Reply library</div><pre>Here are the 15 most common questions and comments we get on social media and messaging, plus our policies (delivery, returns, prices, opening hours).
+Write a friendly, short reply for each in our voice. Where the answer depends on details, ask the customer for them.
+For complaints, acknowledge first, then offer a clear next step. Never promise what our policy does not allow.
+
+Questions: [paste]
+Policies: [paste]
+Voice: [paste]</pre></div>
+<div class="callout warn"><span class="label">Watch out</span><p>Do not let AI reply to customers automatically without review unless you have tested it thoroughly and set clear limits. One wrong promise or tone-deaf reply to an angry customer can spread fast. Complaints and sensitive topics always need a human.</p></div>
+<div class="callout example"><span class="label">Illustrative example</span><p>A restaurant saved its reply library as quick replies in WhatsApp Business and as saved replies on Instagram. Average response time dropped from about five hours to under thirty minutes, and staff still personalised each reply.</p></div></section><section class="lesson"><h2><small>Lesson 5.3</small>WhatsApp and messaging campaigns</h2>
+<p>In many markets, messaging apps like WhatsApp are where customers actually talk to businesses. Tools such as <strong>WhatsApp Business</strong> offer catalogues, labels, quick replies and broadcast features, and larger businesses use the WhatsApp Business Platform through approved providers.</p>
+<h3>Consent first</h3>
+<p>Messaging is personal. Only message people who have agreed to hear from you, make it easy to opt out, and do not send too often. WhatsApp's own business policies require opt-in, and many countries' laws regulate marketing messages. Spammy messaging gets numbers blocked and reported.</p>
+<div class="prompt"><div class="ph">Broadcast message</div><pre>Write 3 versions of a short WhatsApp broadcast message for customers who opted in to hear from us.
+Purpose: [e.g. new stock arrived / weekend offer / event reminder].
+Rules: under 60 words, friendly, one clear call to action, no more than one emoji, include how to stop receiving messages: "Reply STOP to opt out".</pre></div>
+<div class="prompt"><div class="ph">Catalogue descriptions</div><pre>Write short product descriptions for our WhatsApp catalogue (under 40 words each) for the products below.
+Lead with the main benefit, include the key detail a buyer needs (size, colour, price, delivery), and keep our voice.
+
+[paste product list with facts]</pre></div></section>
+<div class="apply">
+  <div class="k">Apply it at work</div>
+  <h3>Build your reply library</h3>
+  <p>Create ready-to-use replies for your most common customer questions.</p>
+  <ol><li>List your 15 most frequent questions and comments from social media and messaging.</li><li>Gather the policies the answers depend on: delivery, returns, prices, hours.</li><li>Run the starter prompt with your voice guide.</li><li>Check every reply against policy, then save them as quick or saved replies in your tools.</li></ol>
+  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+</div>
+<section class="chapter-open">
+  <div class="num">06</div>
+  <div class="kicker">Module 6 of 8 · about 40 minutes</div>
+  <h1>Visuals and video with AI</h1>
+  <div class="summary">Brief image and video tools well, keep visuals on-brand, and understand the rights, disclosure and authenticity rules that protect your reputation.</div>
+  <div class="learn"><b>In this chapter you will learn to</b><ul><li>Write effective image prompts</li><li>Keep AI visuals on-brand</li><li>Apply rules on rights and disclosure</li></ul></div>
+</section>
+<section class="lesson"><h2><small>Lesson 6.1</small>Briefing image tools</h2>
+<p>Image tools respond to clear, visual descriptions. A good image prompt covers <strong>subject, setting, style, lighting, composition and mood</strong>.</p>
+<div class="prompt"><div class="ph">Image prompt structure</div><pre>[Subject]: a ceramic coffee cup with steam rising, on a wooden desk next to an open laptop
+[Setting]: bright modern office, morning
+[Style]: clean product photography, natural colours
+[Lighting]: soft window light from the left
+[Composition]: close-up, cup on the left third, blurred background, empty space on the right for text
+[Mood]: calm, focused
+[Format]: square, 1:1</pre></div>
+<div class="prompt"><div class="ph">Let the chat tool write the image prompt</div><pre>I need an image for [purpose, e.g. an Instagram post announcing our new opening hours].
+Our brand colours: [colours]. Our style: [e.g. bright, minimal, real people, warm].
+Write 3 detailed image-generation prompts in different styles, each with subject, setting, style, lighting, composition, mood and aspect ratio. Leave space for text.</pre></div>
+<div class="callout tip"><span class="label">Tip</span><p>Image tools are still unreliable with text inside images, hands and exact product details. Add text in a design tool like Canva afterwards, and use real photos for your actual products.</p></div></section><section class="lesson"><h2><small>Lesson 6.2</small>Staying on-brand</h2>
+<p>AI visuals can make every brand look the same. Keep yours distinct:</p>
+<ul>
+  <li><strong>Use real photos where it matters most</strong>: your team, your products, your customers. Authentic images usually build more trust.</li>
+  <li><strong>Use AI for the supporting parts</strong>: backgrounds, concepts, mock-ups, removing distractions, extending an image.</li>
+  <li><strong>Create a visual style guide</strong>: colours, fonts, photo style, what to avoid. Paste the style parts into image prompts.</li>
+  <li><strong>Use templates</strong> in your design tool so layouts stay consistent.</li>
+</ul>
+<div class="prompt"><div class="ph">Visual style guide</div><pre>Based on our brand description and these colours, draft a one-page visual style guide for social media: colour use, photo style (what to show and avoid), illustration style, text on images, and 5 example image prompts that follow the guide.
+
+Brand: [description]
+Colours: [hex codes]
+Audience: [who]</pre></div>
+<div class="callout example"><span class="label">Illustrative example</span><p>A fashion retailer uses AI to create seasonal backgrounds and scenes, but always photographs the actual clothes. Customers see exactly what they will receive, and returns stay low.</p></div></section><section class="lesson"><h2><small>Lesson 6.3</small>Rights, disclosure and trust</h2>
+<table>
+<tr><th>Rule</th><th>Why it matters</th></tr>
+<tr><td>Never create realistic images or videos of real people without their permission</td><td>Deepfakes damage trust and may be illegal</td></tr>
+<tr><td>Do not ask for images "in the style of" a living artist or copy brands, logos or characters</td><td>Copyright, trademark and reputation risks</td></tr>
+<tr><td>Do not show AI images as real product photos or real results</td><td>Misleading advertising rules in many countries</td></tr>
+<tr><td>Follow platform rules on labelling AI content</td><td>Meta, TikTok and YouTube have AI-content labelling policies</td></tr>
+<tr><td>Check each tool's terms for commercial use</td><td>Some free plans limit commercial rights</td></tr>
+</table>
+<div class="callout warn"><span class="label">Watch out</span><p>"Before and after" images, testimonials with faces, and anything showing results (health, beauty, finance) must be real. Using AI here can break advertising law and destroy trust.</p></div>
+<div class="callout tip"><span class="label">Tip</span><p>When in doubt, disclose. A simple note such as "Image created with AI" rarely hurts performance, and it protects your credibility.</p></div></section>
+<div class="apply">
+  <div class="k">Apply it at work</div>
+  <h3>Create an on-brand visual set</h3>
+  <p>Produce three on-brand visuals for an upcoming post, following your style rules.</p>
+  <ol><li>Write down your brand colours, photo style and what to avoid.</li><li>Use the starter prompt to get 3 image prompts.</li><li>Generate the images in your tool, and add any text in a design tool.</li><li>Check each image against the rights and disclosure table.</li></ol>
+  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+</div>
+<section class="chapter-open">
+  <div class="num">07</div>
+  <div class="kicker">Module 7 of 8 · about 45 minutes</div>
+  <h1>Campaigns, ads and email</h1>
+  <div class="summary">Write sharper campaign briefs, generate ad variations to test, improve landing pages and build email sequences that convert.</div>
+  <div class="learn"><b>In this chapter you will learn to</b><ul><li>Write a campaign brief with AI</li><li>Create ad variations for testing</li><li>Draft landing pages and email sequences</li></ul></div>
+</section>
+<section class="lesson"><h2><small>Lesson 7.1</small>The campaign brief</h2>
+<p>A clear brief makes every later step faster, for you, your team, your agency and the AI.</p>
+<div class="prompt"><div class="ph">Campaign brief</div><pre>Help me write a one-page campaign brief. Ask me questions first if anything is missing.
+Sections: objective (one measurable goal), audience (from our research), key insight, single-minded message, proof points, offer, channels, budget, timeline, KPIs, and mandatory elements (logo, legal lines).
+Here is what I know so far: [paste notes]</pre></div>
+<div class="prompt"><div class="ph">Stress-test the idea</div><pre>Here is our campaign brief. Act as a sceptical marketing director.
+List the 5 weakest points: unclear goals, weak insight, message not believable, wrong channel, unrealistic budget or timeline. For each, suggest a fix.
+
+[paste brief]</pre></div>
+<div class="callout tip"><span class="label">Tip</span><p>"Single-minded message" means one main idea. If the brief has three messages, the campaign will communicate none of them well.</p></div></section><section class="lesson"><h2><small>Lesson 7.2</small>Ad copy and testing</h2>
+<p>AI is excellent at producing many <strong>genuinely different</strong> variations, which is exactly what testing needs.</p>
+<div class="prompt"><div class="ph">Ad variations</div><pre>Write ad copy for [platform] promoting [offer] to [audience].
+Give me 6 variations, each using a different angle: pain point, benefit, social proof (use only these real facts: [facts]), urgency, curiosity, and a direct offer.
+For each: headline (under [x] characters), primary text (under [x] characters), call to action.
+Mark which 2 you would test first and why.</pre></div>
+<h3>Test properly</h3>
+<ul>
+  <li>Change <strong>one thing at a time</strong> (headline, image or offer) so you know what made the difference.</li>
+  <li>Give each test enough budget and time to reach a meaningful number of results before deciding.</li>
+  <li>Record what you learned in a simple test log, so you do not repeat tests.</li>
+</ul>
+<div class="callout warn"><span class="label">Watch out</span><p>Ads in sensitive categories (health, finance, employment, housing, politics) have extra platform rules and legal requirements. Check them before you write, and never let AI add claims you cannot prove.</p></div></section><section class="lesson"><h2><small>Lesson 7.3</small>Landing pages and email sequences</h2>
+<div class="prompt"><div class="ph">Landing page review</div><pre>Review this landing page copy as a conversion copywriter.
+Check: is the main benefit clear in 5 seconds, does the headline match the ad, are objections answered, is there proof, is the call to action clear and repeated?
+Give me the top 5 changes in order of likely impact, and a rewritten headline and subheadline (3 options).
+
+Ad that sends traffic here: [paste]
+Page copy: [paste]</pre></div>
+<div class="prompt"><div class="ph">Welcome email sequence</div><pre>Write a 4-email welcome sequence for new subscribers who signed up for [lead magnet / reason].
+Goal: [e.g. first purchase within 14 days].
+Email 1 (immediately): deliver what they signed up for and set expectations.
+Email 2 (day 2): our story and why we exist.
+Email 3 (day 5): a customer story or proof (use only these real facts: [facts]).
+Email 4 (day 9): the offer, with a clear reason to act now.
+For each: 3 subject line options, preview text, and body under 150 words in our voice: [paste voice guide].</pre></div>
+<div class="callout example"><span class="label">Illustrative example</span><p>A small online bookshop added a four-email welcome sequence written with AI and edited by the owner. First-purchase rate among new subscribers roughly doubled, because new subscribers now got a reason to buy while they were still interested.</p></div></section>
+<div class="apply">
+  <div class="k">Apply it at work</div>
+  <h3>Brief and build a mini campaign</h3>
+  <p>Plan one real campaign and produce its ad variations and email.</p>
+  <ol><li>Choose a real upcoming offer, launch or event.</li><li>Write the brief with AI, then stress-test it with the sceptical director prompt.</li><li>Produce 6 ad variations and pick 2 to test.</li><li>Write one email that supports the campaign.</li></ol>
+  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+</div>
+<section class="chapter-open">
+  <div class="num">08</div>
+  <div class="kicker">Module 8 of 8 · about 40 minutes</div>
+  <h1>Measurement, ethics and your AI routine</h1>
+  <div class="summary">Turn analytics into decisions, use AI honestly and legally, and build a weekly routine and team plan that makes the gains last.</div>
+  <div class="learn"><b>In this chapter you will learn to</b><ul><li>Turn data into clear marketing reports</li><li>Apply core ethical and legal rules</li><li>Plan a 30-day team roll-out</li></ul></div>
+</section>
+<section class="lesson"><h2><small>Lesson 8.1</small>From analytics to decisions</h2>
+<p>Most marketing reports list numbers. Good ones say <strong>what worked, why, and what to do next</strong>. Export your data, calculate key figures in a spreadsheet, then use AI to help interpret and write.</p>
+<div class="prompt"><div class="ph">Monthly performance summary</div><pre>Act as a marketing analyst. Below are this month's results by channel and campaign, with last month for comparison (percentage changes already calculated).
+1. Summarise the 3 most important findings in plain English.
+2. Suggest likely reasons for each, and how I could confirm them.
+3. Recommend 3 actions for next month, ranked by likely impact.
+4. Point out any number that looks suspicious or may be a tracking problem.
+Use only the data given. Do not calculate new totals.
+
+[paste data]</pre></div>
+<div class="callout tip"><span class="label">Tip</span><p>Focus on a few metrics tied to business results, such as leads, sales, cost per acquisition and retention. Likes and impressions are useful signals, not goals.</p></div>
+<div class="callout warn"><span class="label">Watch out</span><p>AI explanations for why numbers changed are guesses until you confirm them. Check tracking, seasonality, budget changes and what competitors did.</p></div></section><section class="lesson"><h2><small>Lesson 8.2</small>Ethics and the law</h2>
+<p>Trust is a marketer's most valuable asset. AI makes it easier to cut corners, so the rules matter more.</p>
+<table>
+<tr><th>Never</th><th>Always</th></tr>
+<tr><td>Write fake reviews, testimonials or endorsements</td><td>Use real customer words, with permission</td></tr>
+<tr><td>Invent statistics, awards or results</td><td>Check every claim against a source you can show</td></tr>
+<tr><td>Paste customer personal data into tools without approval</td><td>Anonymise and follow data protection law</td></tr>
+<tr><td>Copy competitors' or creators' work</td><td>Create original work and respect copyright</td></tr>
+<tr><td>Hide paid partnerships or mislead with AI images</td><td>Disclose sponsorships and label AI content where required</td></tr>
+<tr><td>Target vulnerable groups with manipulative messages</td><td>Market in a way you would be proud to explain publicly</td></tr>
+</table>
+<p>Consumer protection and advertising regulators in many countries actively act against fake reviews and misleading claims, and data protection laws such as the GDPR in the EU and UK, and similar national laws elsewhere, regulate how you use customer data. Ask your legal or compliance contact when unsure.</p></section><section class="lesson"><h2><small>Lesson 8.3</small>Your weekly routine and team plan</h2>
+<table>
+<tr><th>When</th><th>Routine</th></tr>
+<tr><td>Monday</td><td>Plan the week's content from pillars and calendar; draft with your voice guide.</td></tr>
+<tr><td>Daily</td><td>Replies from your library, quick copy edits, caption variations.</td></tr>
+<tr><td>Per campaign</td><td>Brief, stress-test, ad variations, email support.</td></tr>
+<tr><td>Monthly</td><td>Performance summary and next month's actions; update the test log.</td></tr>
+<tr><td>Quarterly</td><td>Refresh customer insight, voice guide and prompt library.</td></tr>
+</table>
+<h3>A 30-day team roll-out</h3>
+<table>
+<tr><th>Week</th><th>Focus</th><th>Output</th></tr>
+<tr><td>1</td><td>Agree rules: approved tools, data, claims, disclosure</td><td>One-page AI use guideline</td></tr>
+<tr><td>2</td><td>Shared voice guide and reply library</td><td>Everyone uses the same foundations</td></tr>
+<tr><td>3</td><td>Run one campaign with AI end to end</td><td>Shared prompts for that campaign type</td></tr>
+<tr><td>4</td><td>Measure and decide</td><td>Time saved, results, what to scale</td></tr>
+</table>
+<div class="prompt"><div class="ph">Team AI guideline</div><pre>Draft a one-page AI use guideline for a marketing team of [number] at [type of organisation].
+Cover: approved tools, customer data rules, fact-checking claims, rules for AI images and video, disclosure, review before publishing, and who to ask when unsure.
+Plain English, practical.</pre></div>
+<div class="callout tip"><span class="label">Tip</span><p>Congratulations on reaching the end. Finish the practice task and quiz to unlock your certificate, and keep the Prompt library open as your daily toolkit.</p></div></section>
+<div class="apply">
+  <div class="k">Apply it at work</div>
+  <h3>Report, then plan your next 30 days</h3>
+  <p>Produce a real performance summary and leave with a routine and a team plan.</p>
+  <ol><li>Export last month's results and calculate the key changes in a spreadsheet.</li><li>Run the performance summary prompt and check every reason it suggests.</li><li>Write your weekly routine using the table in lesson 3.</li><li>Use the starter prompt to draft a 30-day team roll-out plan.</li></ol>
+  <div class="online">The starter prompt, completion checklist and module quiz for this task are on the learning site (https://zionkiwiamarshall-dot.github.io/ai-for-marketing/).</div>
+</div>
+<section class="appendix">
+  <h1>Prompt library</h1>
+  <p>Every prompt from the lessons, grouped by chapter. Replace anything in [square brackets] with your own details, and apply the verification habits from Module 1 to every output.</p>
+  <div class="group">01 · AI foundations for marketers</div><div class="prompt"><div class="ph">Strip out the AI voice</div><pre>Edit the text below so it sounds like a real person from our brand wrote it.
+Remove clichés (e.g. "unlock", "elevate", "game-changer", "in today's world"), cut filler, vary sentence length, and replace vague claims with specific ones, using only the facts I give you.
+If a claim has no supporting fact, mark it [NEEDS PROOF].
+
+Facts about our product: [list]
+Text: [paste]</pre></div><div class="group">02 · Know your customer with AI</div><div class="prompt"><div class="ph">Review and comment analysis</div><pre>Below are [number] customer reviews and comments about [product/service] (names removed).
+Analyse them and give me:
+1. The top 5 things customers value, each with 2 short example quotes copied exactly from the text.
+2. The top 5 complaints or frustrations, with example quotes.
+3. The exact words customers use to describe the problem we solve (useful for ad copy).
+4. Any surprising or unexpected themes.
+Only use what is in the text. Do not invent quotes.
+
+[paste comments]</pre></div><div class="prompt"><div class="ph">Build a data-based persona</div><pre>Using only the research notes below, build up to 3 customer personas.
+For each: who they are (role, situation), main goal, biggest frustration, what triggers them to look for a solution, objections before buying, where they look for information, and 3 exact phrases from the notes that capture their voice.
+If the data does not support a detail, write "unknown, needs research" rather than guessing.
+
+[paste research notes, survey summaries, sales notes]</pre></div><div class="prompt"><div class="ph">Improve a survey</div><pre>Review my customer survey below.
+Flag questions that are leading, double-barrelled, confusing or likely to give useless answers, and suggest a better version of each.
+Keep it under [number] questions and under 5 minutes to complete. Suggest the best order.
+
+[paste survey]</pre></div><div class="prompt"><div class="ph">Customer interview guide</div><pre>Create a 20-minute customer interview guide to understand why customers chose [product] and what nearly stopped them.
+Use open questions about past behaviour (what they did), not hypotheticals (what they would do).
+Include follow-up probes and a short opening script.</pre></div><div class="group">03 · Prompting and brand voice</div><div class="prompt"><div class="ph">Launch captions (RCTFC)</div><pre>Role: Act as a senior social media copywriter.
+Context: We are [brand], selling [product] to [audience]. Key facts: [3 to 5 facts]. Our voice: [3 words, e.g. warm, witty, direct].
+Task: Write 5 Instagram captions for launch week, each with a different angle (problem, benefit, behind the scenes, customer, offer).
+Format: Under 40 words each, one emoji max, end with a question or a clear call to action.
+Checks: Use only the facts given. No claims we cannot prove. Avoid: "elevate", "unlock", "game-changer".</pre></div><div class="prompt"><div class="ph">Create a voice guide from examples</div><pre>Below are 6 pieces of content our audience responded well to.
+Analyse them and write a one-page brand voice guide: voice in 3 words (with "this, not that"), typical sentence length, vocabulary we use, words to avoid, how we open and close, emoji and punctuation habits.
+Then write one new short post in this voice about [topic] so I can test the guide.
+
+[paste examples]</pre></div><div class="prompt"><div class="ph">Ask before writing</div><pre>Before you write anything, ask me up to 5 questions about the audience, goal, offer and tone that you would need to do this really well. Wait for my answers.
+
+Task: [describe the content]</pre></div><div class="prompt"><div class="ph">Same message, many readers</div><pre>Rewrite the message below for 3 audiences: [audience 1], [audience 2], [audience 3].
+Keep the core offer identical. Change the angle, examples and tone for each. Under 80 words each.
+
+[paste message]</pre></div><div class="group">04 · Content creation at scale</div><div class="prompt"><div class="ph">Content pillars</div><pre>We are [brand], helping [audience] with [problem]. Our goals this quarter: [goals].
+Suggest 4 content pillars. For each: why it matters to our audience, 5 post ideas, and which format suits it best (carousel, short video, story, article, email).
+Base ideas on these customer insights: [paste insights from Module 2].</pre></div><div class="prompt"><div class="ph">Monthly calendar</div><pre>Using these pillars [paste], create a content calendar for [month] for [channels].
+Posting frequency: [e.g. 3 per week on Instagram, 2 on LinkedIn, 1 email].
+Include key dates relevant to our audience and industry: [list any you know].
+Columns: date, channel, pillar, idea, format, call to action, owner.
+Balance the pillars evenly and avoid repeating the same format back to back.</pre></div><div class="prompt"><div class="ph">Repurpose a long piece</div><pre>Below is the transcript of our [webinar / interview / report].
+Turn it into:
+- 5 short social posts, each built on one specific insight
+- 1 LinkedIn article outline
+- 3 short video ideas (hook, main point, call to action)
+- 1 email newsletter section (under 150 words)
+- 5 quote cards: exact quotes from the transcript, under 20 words each
+Use only what is in the transcript. Keep our voice: [paste voice guide].
+
+[paste transcript]</pre></div><div class="prompt"><div class="ph">Blog outline</div><pre>Create an outline for a blog post answering: "[the question your customer types into a search engine]".
+Audience: [who]. Goal: [what they should do after reading].
+Include: a working title, the questions a reader would want answered (as H2 headings), where to add our own examples or data [ADD OUR EXAMPLE], and a short meta description under 155 characters.</pre></div><div class="prompt"><div class="ph">15 to 30 second video script</div><pre>Write 3 short video scripts (15 to 30 seconds) about [topic] for [platform].
+Each script: a hook in the first 2 seconds, the main point, and a call to action.
+Show it as a table: time, what we see on screen, what is said, on-screen text.
+It should be filmable on a phone by one person.</pre></div><div class="group">05 · Social media and messaging marketing</div><div class="prompt"><div class="ph">Adapt across platforms</div><pre>Adapt this core message for Instagram, LinkedIn, TikTok (as a video idea) and Facebook.
+Follow what usually works on each platform. Keep our voice: [paste voice guide].
+Core message: [paste]
+Call to action: [what we want people to do]</pre></div><div class="prompt"><div class="ph">Reply library</div><pre>Here are the 15 most common questions and comments we get on social media and messaging, plus our policies (delivery, returns, prices, opening hours).
+Write a friendly, short reply for each in our voice. Where the answer depends on details, ask the customer for them.
+For complaints, acknowledge first, then offer a clear next step. Never promise what our policy does not allow.
+
+Questions: [paste]
+Policies: [paste]
+Voice: [paste]</pre></div><div class="prompt"><div class="ph">Broadcast message</div><pre>Write 3 versions of a short WhatsApp broadcast message for customers who opted in to hear from us.
+Purpose: [e.g. new stock arrived / weekend offer / event reminder].
+Rules: under 60 words, friendly, one clear call to action, no more than one emoji, include how to stop receiving messages: "Reply STOP to opt out".</pre></div><div class="prompt"><div class="ph">Catalogue descriptions</div><pre>Write short product descriptions for our WhatsApp catalogue (under 40 words each) for the products below.
+Lead with the main benefit, include the key detail a buyer needs (size, colour, price, delivery), and keep our voice.
+
+[paste product list with facts]</pre></div><div class="group">06 · Visuals and video with AI</div><div class="prompt"><div class="ph">Image prompt structure</div><pre>[Subject]: a ceramic coffee cup with steam rising, on a wooden desk next to an open laptop
+[Setting]: bright modern office, morning
+[Style]: clean product photography, natural colours
+[Lighting]: soft window light from the left
+[Composition]: close-up, cup on the left third, blurred background, empty space on the right for text
+[Mood]: calm, focused
+[Format]: square, 1:1</pre></div><div class="prompt"><div class="ph">Let the chat tool write the image prompt</div><pre>I need an image for [purpose, e.g. an Instagram post announcing our new opening hours].
+Our brand colours: [colours]. Our style: [e.g. bright, minimal, real people, warm].
+Write 3 detailed image-generation prompts in different styles, each with subject, setting, style, lighting, composition, mood and aspect ratio. Leave space for text.</pre></div><div class="prompt"><div class="ph">Visual style guide</div><pre>Based on our brand description and these colours, draft a one-page visual style guide for social media: colour use, photo style (what to show and avoid), illustration style, text on images, and 5 example image prompts that follow the guide.
+
+Brand: [description]
+Colours: [hex codes]
+Audience: [who]</pre></div><div class="group">07 · Campaigns, ads and email</div><div class="prompt"><div class="ph">Campaign brief</div><pre>Help me write a one-page campaign brief. Ask me questions first if anything is missing.
+Sections: objective (one measurable goal), audience (from our research), key insight, single-minded message, proof points, offer, channels, budget, timeline, KPIs, and mandatory elements (logo, legal lines).
+Here is what I know so far: [paste notes]</pre></div><div class="prompt"><div class="ph">Stress-test the idea</div><pre>Here is our campaign brief. Act as a sceptical marketing director.
+List the 5 weakest points: unclear goals, weak insight, message not believable, wrong channel, unrealistic budget or timeline. For each, suggest a fix.
+
+[paste brief]</pre></div><div class="prompt"><div class="ph">Ad variations</div><pre>Write ad copy for [platform] promoting [offer] to [audience].
+Give me 6 variations, each using a different angle: pain point, benefit, social proof (use only these real facts: [facts]), urgency, curiosity, and a direct offer.
+For each: headline (under [x] characters), primary text (under [x] characters), call to action.
+Mark which 2 you would test first and why.</pre></div><div class="prompt"><div class="ph">Landing page review</div><pre>Review this landing page copy as a conversion copywriter.
+Check: is the main benefit clear in 5 seconds, does the headline match the ad, are objections answered, is there proof, is the call to action clear and repeated?
+Give me the top 5 changes in order of likely impact, and a rewritten headline and subheadline (3 options).
+
+Ad that sends traffic here: [paste]
+Page copy: [paste]</pre></div><div class="prompt"><div class="ph">Welcome email sequence</div><pre>Write a 4-email welcome sequence for new subscribers who signed up for [lead magnet / reason].
+Goal: [e.g. first purchase within 14 days].
+Email 1 (immediately): deliver what they signed up for and set expectations.
+Email 2 (day 2): our story and why we exist.
+Email 3 (day 5): a customer story or proof (use only these real facts: [facts]).
+Email 4 (day 9): the offer, with a clear reason to act now.
+For each: 3 subject line options, preview text, and body under 150 words in our voice: [paste voice guide].</pre></div><div class="group">08 · Measurement, ethics and your AI routine</div><div class="prompt"><div class="ph">Monthly performance summary</div><pre>Act as a marketing analyst. Below are this month's results by channel and campaign, with last month for comparison (percentage changes already calculated).
+1. Summarise the 3 most important findings in plain English.
+2. Suggest likely reasons for each, and how I could confirm them.
+3. Recommend 3 actions for next month, ranked by likely impact.
+4. Point out any number that looks suspicious or may be a tracking problem.
+Use only the data given. Do not calculate new totals.
+
+[paste data]</pre></div><div class="prompt"><div class="ph">Team AI guideline</div><pre>Draft a one-page AI use guideline for a marketing team of [number] at [type of organisation].
+Cover: approved tools, customer data rules, fact-checking claims, rules for AI images and video, disclosure, review before publishing, and who to ask when unsure.
+Plain English, practical.</pre></div>
+</section>
+<section class="back">
+  <h2>AI for Marketing</h2>
+  <p>AI Training Camp</p>
+  <p>Continue with the hands-on tasks and quizzes at<br><strong>https://zionkiwiamarshall-dot.github.io/ai-for-marketing/</strong></p>
+</section></body></html>
